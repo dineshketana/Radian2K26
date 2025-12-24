@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RADIAN 2K26 | FAQ's</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ICONS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ================= VIDEO BACKGROUND ================= */
+    .bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.35);
+    }
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    /* ================= NAVBAR ================= */
+    .radian-navbar {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(14px);
+      height: 80px;
+      transition: 0.3s ease;
+    }
+
+    .radian-navbar.scrolled {
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar-brand img {
+      width: 42px;
+    }
+
+    .brand-text {
+      line-height: 1;
+    }
+
+    .brand-title {
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .brand-year {
+      font-size: 0.85rem;
+      color: #1db9ff;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #1db9ff;
+      transition: 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.85);
+        margin-top: 10px;
+        border-radius: 12px;
+        padding: 20px;
+      }
+    }
+
+    /* ================= FAQ HEADER ================= */
+    .faq-header {
+      text-align: center;
+      padding: 120px 20px 40px;
+    }
+
+    .faq-header h1 {
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+    }
+
+    .faq-header p {
+      margin-top: 10px;
+      color: #9ff;
+    }
+
+    /* SEARCH */
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .search-box input {
+      width: 90%;
+      max-width: 500px;
+      padding: 14px 18px;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      background: #111;
+      color: #0ff;
+    }
+
+    /* FAQ LIST */
+    .faq-container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(0, 255, 255, 0.25);
+      border-radius: 14px;
+      margin-bottom: 18px;
+      overflow: hidden;
+      transition: 0.4s;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    }
+
+    .faq-question {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .faq-question h3 {
+      font-size: 1.1rem;
+    }
+
+    .faq-icon {
+      font-size: 1.6rem;
+      color: #0ff;
+      transition: 0.3s;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      color: #ccc;
+      transition: 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-bottom: 20px;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .tag {
+      font-size: 0.65rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: #0ff;
+      color: #000;
+      margin-left: 10px;
+    }
+
+    /* ================= FOOTER ================= */
+    .radian-footer {
+      background: linear-gradient(to top, #02040f, #000);
+      padding: 90px 50px 30px;
+      margin-top: 80px;
+    }
+
+    .footer-wrapper {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 50px;
+    }
+
+    .footer-box h2 span {
+      color: #1db9ff;
+    }
+
+    .footer-box h4 {
+      color: #1db9ff;
+      margin-bottom: 15px;
+    }
+
+    .footer-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-box ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .footer-social a:hover {
+      background: #1db9ff;
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      opacity: 0.7;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .footer-wrapper {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND VIDEO -->
+  <video class="bg-video" src="assets/videos/faq.mp4" autoplay muted loop playsinline></video>
+  <div class="video-overlay"></div>
+
+  <!-- NAVBAR -->
+  <nav class="radian-navbar navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-5">
+      <a class="navbar-brand d-flex gap-2 align-items-center" href="home.html">
+        <img src="assets/images/radian_logo.png">
+        <div class="brand-text">
+          <span class="brand-title">RADIAN</span>
+          <span class="brand-year">2K26</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="nav">
+        <ul class="navbar-nav gap-4">
+          <li><a class="nav-link" href="home.html">Home</a></li>
+          <li><a class="nav-link" href="events.html">Events</a></li>
+          <li><a class="nav-link" href="coordinators.html">Coordinators</a></li>
+          <li><a class="nav-link active" href="#">FAQ's</a></li>
+          <li><a class="nav-link" href="contact.html">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FAQ CONTENT -->
+  <section class="faq-header">
+    <h1>FAQ's</h1>
+    <p>Everything you need to know about RADIAN 2K26</p>
+  </section>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search your question here...">
+  </div>
+
+  <section class="faq-container">
+
+    <div class="faq-item">
+        <div class="faq-question">
+            <h3>What is RADIAN 2K26? <span class="tag">General</span></h3>
+            <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+            RADIAN 2K26 is a national-level technical and cultural fest featuring tech events,
+            workshops, competitions, and non-tech activities.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            <h3>Who can participate? <span class="tag">Eligibility</span></h3>
+            <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+            Students from any college and any branch are eligible to participate
+            unless specified otherwise for a particular event.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            <h3>Is registration free? <span class="tag">Registration</span></h3>
+            <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+            Some events are free while others have minimal registration fees.
+            Details are available on the respective event pages.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            <h3>Will certificates be provided? <span class="tag">Certificates</span></h3>
+            <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+            Yes, all participants will receive participation certificates and
+            winners will receive merit certificates.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            <h3>Whom should I contact for queries? <span class="tag">Support</span></h3>
+            <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+            You can reach out to the event coordinators listed on the Coordinators page
+            or use the Contact section for official queries.
+        </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="radian-footer">
+    <div class="footer-wrapper">
+      <div class="footer-box">
+        <h2>RADIAN <span>2K26</span></h2>
+        <p>National Level Technical & Cultural Fest<br>ANITS, Visakhapatnam</p>
+      </div>
+
+      <div class="footer-box">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="coordinators.html">Coordinators</a></li>
+          <li><a href="#">FAQ's</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-box">
+        <h4>Contact</h4>
+        <p>ANITS, Sangivalasa</p>
+        <p>radian@anits.edu.in</p>
+      </div>
+
+      <div class="footer-box">
+        <h4>Follow Us</h4>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/radian_2k26?igsh=MXRhNjQ1a29hY3Jraw=="><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 RADIAN 2K26 IT DEPARTMENT · All Rights Reserved
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('active');
+      });
+    });
+
+    document.getElementById('search').addEventListener('input', function () {
+      let value = this.value.toLowerCase();
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.style.display = item.innerText.toLowerCase().includes(value) ? 'block' : 'none';
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      document.querySelector(".radian-navbar")
+        .classList.toggle("scrolled", window.scrollY > 30);
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

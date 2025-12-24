@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>RADIAN 2K26 | Coordinators</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Orbitron", sans-serif;
+    }
+
+    body {
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background: #000;
+    }
+
+    /* ================= VIDEO BACKGROUND ================= */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    /* DARK OVERLAY */
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
+    }
+
+    /* ================= NAVBAR =================
+    /* ================= RADIAN NAVBAR ================= */
+    .radian-navbar {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(14px);
+      height: 80px;
+      transition: 0.3s ease;
+    }
+
+    .radian-navbar.scrolled {
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar-brand img {
+      width: 42px;
+    }
+
+    .brand-text {
+      line-height: 1;
+    }
+
+    .brand-title {
+      color: #fff;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+    }
+
+    .brand-year {
+      font-size: 0.85rem;
+      color: #1db9ff;
+    }
+
+    /* LINKS */
+    .nav-link {
+      color: #fff !important;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #1db9ff;
+      transition: 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* TOGGLER */
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    /* MOBILE */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.85);
+        margin-top: 10px;
+        border-radius: 12px;
+        padding: 20px;
+      }
+    }
+
+    /* ================= FOOTER ================= */
+    /* ================= RADIAN FOOTER ================= */
+    .radian-footer {
+      background: linear-gradient(to top, #02040f, #000);
+      padding: 90px 50px 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-wrapper {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 50px;
+    }
+
+    .footer-box h2 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+
+    .footer-box h2 span {
+      color: #1db9ff;
+    }
+
+    .footer-box h4 {
+      margin-bottom: 15px;
+      color: #1db9ff;
+    }
+
+    .footer-box p,
+    .footer-box li {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+
+    .footer-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-box ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .footer-box ul li a:hover {
+      color: #1db9ff;
+      padding-left: 6px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background: #1db9ff;
+      border-color: #1db9ff;
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .footer-wrapper {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+
+    /* ================= COORDINATORS SECTION ================= */
+    .coordinators-section {
+      padding: 140px 60px 120px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .coordinators-section h1 {
+      text-align: center;
+      font-size: 3rem;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    .coordinators-section h1 span {
+      color: #1db9ff;
+    }
+
+    .coordinators-section p {
+      text-align: center;
+      opacity: 0.75;
+      margin-bottom: 70px;
+    }
+
+    /* CATEGORY TITLE */
+    .coordinator-title {
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      margin: 70px 0 35px;
+      color: #1db9ff;
+      text-transform: uppercase;
+    }
+
+    /* CARD GRID */
+    .coordinator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 35px;
+    }
+
+    /* CARD */
+    .coordinator-card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      border-radius: 18px;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coordinator-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg,
+          transparent,
+          rgba(29, 185, 255, 0.25),
+          transparent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .coordinator-card:hover::before {
+      opacity: 1;
+    }
+
+    .coordinator-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 25px 60px rgba(29, 185, 255, 0.35);
+    }
+
+    /* IMAGE */
+    /* BIG PROFILE IMAGE */
+    .coordinator-card img,
+    .hod-card img {
+      width: 290px;
+      /* increase size */
+      height: 290px;
+      object-fit: scale-down;
+      border-radius: 20%;
+      border: 4px solid #1db9ff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(29, 185, 255, 0.6);
+    }
+
+    /* TEXT */
+    .coordinator-card h3 {
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .coordinator-card span {
+      display: block;
+      font-size: 0.85rem;
+      color: #1db9ff;
+      margin: 6px 0;
+    }
+
+    .coordinator-card a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .coordinator-card a:hover {
+      color: #1db9ff;
+    }
+
+    /* ================= NAVBAR MOBILE FIX ================= */
+    @media (max-width: 991px) {
+      .radian-navbar {
+        height: auto;
+        padding: 10px 0;
+      }
+
+      .navbar-brand img {
+        width: 34px;
+      }
+
+      .brand-title {
+        font-size: 1.05rem;
+        letter-spacing: 1px;
+      }
+
+      .brand-year {
+        font-size: 0.75rem;
+      }
+
+      /* MOBILE MENU */
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.92);
+        margin-top: 12px;
+        border-radius: 14px;
+        padding: 18px 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      }
+
+      .navbar-nav {
+        gap: 14px;
+      }
+
+      .nav-link {
+        font-size: 0.95rem;
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      .nav-link::after {
+        display: none;
+        /* cleaner mobile */
+      }
+    }
+
+    /* ================= HEADING MOBILE FIX ================= */
+    @media (max-width: 768px) {
+      .coordinators-section {
+        padding-top: 120px;
+        /* avoids navbar overlap */
+      }
+
+      .coordinators-section h1 {
+        font-size: 2rem;
+        letter-spacing: 1.5px;
+        line-height: 1.2;
+      }
+
+      .coordinators-section p {
+        font-size: 0.85rem;
+        padding: 0 10px;
+      }
+    }
+
+    /* ================= MOBILE RESPONSIVE FIX ================= */
+    @media (max-width: 768px) {
+
+      /* SECTION PADDING */
+      .coordinators-section {
+        padding: 110px 20px 80px;
+      }
+
+      .coordinators-section h1 {
+        font-size: 2.1rem;
+        letter-spacing: 2px;
+      }
+
+      .coordinators-section p {
+        font-size: 0.85rem;
+        margin-bottom: 40px;
+      }
+
+      /* CATEGORY TITLE */
+      .coordinator-title {
+        font-size: 1.2rem;
+        margin: 50px 0 25px;
+        text-align: center;
+      }
+
+      /* GRID → SINGLE COLUMN */
+      .coordinator-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      /* CARD */
+      .coordinator-card {
+        padding: 22px 18px;
+        border-radius: 16px;
+      }
+
+      /* IMAGE SIZE REDUCE */
+      .coordinator-card img,
+      .hod-card img {
+        width: 170px;
+        height: 170px;
+        border-radius: 18%;
+        margin-bottom: 15px;
+      }
+
+      /* TEXT */
+      .coordinator-card h3 {
+        font-size: 1rem;
+      }
+
+      .coordinator-card span {
+        font-size: 0.8rem;
+      }
+
+      .coordinator-card a {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* EXTRA SMALL DEVICES */
+    @media (max-width: 480px) {
+      .coordinators-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .coordinator-card img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🎥 BACKGROUND VIDEO -->
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="assets/videos/coordinate.mp4" type="video/mp4" />
+  </video>
+
+  <!-- OVERLAY -->
+  <div class="video-overlay"></div>
+  <nav class="radian-navbar navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-5">
+      <!-- BRAND -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+        <img src="assets/images/radian_logo.png" alt="RADIAN Logo" />
+        <div class="brand-text">
+          <span class="brand-title">RADIAN</span>
+          <span class="brand-year">2K26</span>
+        </div>
+      </a>
+
+      <!-- TOGGLER -->
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#radianNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- LINKS -->
+      <div class="collapse navbar-collapse justify-content-end" id="radianNav">
+        <ul class="navbar-nav gap-4">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="events.html">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Coordinators</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ's</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script>
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector(".radian-navbar");
+      nav.classList.toggle("scrolled", window.scrollY > 30);
+    });
+  </script>
+  <section class="coordinators-section">
+    <h1>OUR <span>COORDINATORS</span></h1>
+    <p>Meet the people behind RADIAN 2K26</p>
+
+    <!-- ================= HOD ================= -->
+    <h2 class="coordinator-title">HOD</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/hod.png" alt="HOD" />
+        <h3>Dr. M. Rekha Sundari</h3>
+        <span>Head of Department</span>
+        <a href="tel:+919848375001">+91 9848375001</a>
+      </div>
+    </div>
+
+    <!-- ================= FACULTY COORDINATORS ================= -->
+    <h2 class="coordinator-title">Faculty Coordinators</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/rpsir.jpeg" />
+        <h3>Mr Reddi Prasadu</h3>
+        <span>Faculty Coordinator</span>
+        <a href="tel:+919848565696">+91 9848565696</a>
+      </div>
+
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/dpsir.png" />
+        <h3>Mr Durga Praveen Kumar. A</h3>
+        <span>Faculty Coordinator</span>
+        <a href="tel:+919642667945">+91 9642667945</a>
+      </div>
+    </div>
+
+    <!-- ================= STUDENT COORDINATORS ================= -->
+    <h2 class="coordinator-title">STUDENT Coordinators</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/govardhan_student.jpeg" />
+        <h3>D. Govardhan</h3>
+        <span>Fest Coordinator</span>
+        <a href="tel:+91 9014407137">+91 9014407137</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/praharsini_student.jpg" />
+        <h3>K.L. Praharshini</h3>
+        <span>Fest Coordinator</span>
+        <a href="tel:+918555964667">+91 8555964667</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/Amrutha_Student.jpeg" />
+        <h3>B.Amrutha</h3>
+        <span>Fest Coordinator </span>
+        <a href="tel:+91 9391538862">+91 9391538862</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/Bharath_Student.jpeg" />
+        <h3>M. Bharath</h3>
+        <span>Fest Coordinator </span>
+        <a href="tel:+91 9063249434">+91 9063249434</a>
+      </div>
+    </div>
+
+    <!-- ================= DESIGN TEAM ================= -->
+    <h2 class="coordinator-title">PROMOTIONAL Coordinators</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/dineshketana_student.jpg" />
+        <h3>Dinesh Ketana</h3>
+        <span>Design Lead (Posters and Website Developer)</span>
+        <a href="tel:+919347663365">+91 9347663365</a>
+        <!-- <a href="mailto:ketanadinesh.22.it@anits.edu.in">ketanadinesh.22.it@anits.edu.in</a> -->
+      </div>
+
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/joshikapalametta_student.png" />
+        <h3>Joshika Palametta</h3>
+        <span>Website Designer</span>
+        <a href="tel:+918978885442">+91 8978885442</a>
+        <!-- <a href="mailto:joshikapalametta.22.it@anits.edu.in">joshikapalametta.22.it@anits.edu.in</a> -->
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/Suresh_Student.JPG" />
+        <h3>D.Suresh</h3>
+        <span>Videos and Reels</span>
+        <a href="tel:+919502373340">+91 9502373340</a>
+        <!-- <a href="mailto:ketanadinesh.22.it@anits.edu.in">dsuresh.22.it@anits.edu.in</a> -->
+      </div>
+      <!-- <div class="coordinator-card">
+        <img src="assets/images/coordinators/akash_student.jpeg" />
+        <h3>Akash Pratti</h3>
+        <span>Design Lead</span>
+        <a href="tel:+916304541677">+91 6304541677</a>
+        <!-- <a href="mailto:prattiakash.22.it@anits.edu.in">prattiakash.22.it@anits.edu.in</a> -->
+      </div> -->
+    </div>
+    <!-- ================= FlashMOB ================= -->
+    <h2 class="coordinator-title">FlashMOB Coordinators</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/Sharmila_Student.jpg" />
+        <h3>MD. Aarif</h3>
+        <span>FlashMob Lead</span>
+        <a href="tel:+918639009776">+91 8639009776</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/Sharmila_Student.jpg" />
+        <h3>Ch. Keerthi</h3>
+        <span>FlashMob Lead</span>
+        <a href="tel:+918919115646">+91 8919115646</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/Sharmila_Student.jpg" />
+        <h3>B. Niteesh</h3>
+        <span>FlashMob Lead</span>
+        <a href="tel:+919550156981">+91 9550156981</a>
+      </div>
+    </div>
+
+    <!-- ================= DECORATION ================= -->
+    <h2 class="coordinator-title">Decoration Coordinators</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/Sharmila_Student.jpg" />
+        <h3>A. Dedeepya</h3>
+        <span>Decoration Lead</span>
+        <a href="tel:+916305267173">+91 6305267173</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/gayathri_student.jpg" />
+        <h3>Gayathri Vaddi</h3>
+        <span>Decoration Lead</span>
+        <a href="tel:+919705731010">+919705731010</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/Sharmila_Student.jpg" />
+        <h3>A. Khyathi Setty</h3>
+        <span>Decoration Lead</span>
+        <a href="tel:+919949564557">+919949564557</a>
+      </div>
+    </div>
+
+    <!-- ================= CULTURALS  ================= -->
+    <h2 class="coordinator-title">CULTURALS Coordinator</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/Sharmila_Student.jpg" />
+        <h3>T.Sharmila</h3>
+        <span>Culturals Lead</span>
+        <a href="tel:+916305649349">+916305649349</a>
+      </div>
+    </div>
+    <!-- ================= BUDGET ================= -->
+    <h2 class="coordinator-title">BUDGET Coordinator</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/abhishek_student.jpg" />
+        <h3>Abhishek Bodda</h3>
+        <span>Budget Lead</span>
+        <a href="tel:+917730945987">+917730945987</a>
+      </div>
+    </div>
+        <!-- ================= SOUVENIR  ================= -->
+    <h2 class="coordinator-title">SOUVENIR  Coordinator</h2>
+    <div class="coordinator-grid">
+      <div class="coordinator-card">
+        <img src="assets/images/" />
+        <h3>MD. Mustaqim</h3>
+        <span>Souvenir Lead</span>
+        <a href="tel:+919157869284">+91 9157869284</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="radian-footer">
+    <div class="footer-wrapper">
+      <!-- BRAND -->
+      <div class="footer-box brand">
+        <h2>RADIAN <span>2K26</span></h2>
+        <p>
+          National Level Technical & Cultural Fest<br />
+          Department of Information Technology<br />
+          ANITS, Visakhapatnam
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="footer-box">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="#">Coordinators</a></li>
+          <li><a href="faq.html">FAQ's</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="footer-box">
+        <h4>Contact</h4>
+        <p><i class="bi bi-geo-alt"></i> ANITS, Sangivalasa</p>
+        <p><i class="bi bi-envelope"></i> radian@anits.edu.in</p>
+        <p><i class="bi bi-telephone"></i> +91 9XXXXXXXXX</p>
+      </div>
+
+      <!-- SOCIAL -->
+      <div class="footer-box">
+        <h4>Follow Us</h4>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/radian_2k26?igsh=MXRhNjQ1a29hY3Jraw=="><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 <strong>RADIAN 2K26 IT DEPARTMENT</strong> · All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
