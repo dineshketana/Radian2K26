@@ -347,9 +347,10 @@ video{
     overflow-x: hidden;
   }
 
-  /* Overlay spacing */
+  /* Move center content slightly UP */
   .overlay {
     padding: 0 16px;
+    transform: translateY(-30px);
   }
 
   /* Title resize */
@@ -389,12 +390,13 @@ video{
     font-size: 1.4rem;
   }
 
-  /* LEFT NAV → BOTTOM NAV */
+  /* NAV BAR → TOP RIGHT (replaces social position) */
   .navbar-left {
-    top: auto;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 18px;
+    bottom: auto;
+    left: auto;
+    right: 14px;
+    transform: none;
   }
 
   .navbar-left ul {
@@ -417,13 +419,15 @@ video{
     display: none;
   }
 
-  /* Social bar → top right */
+  /* SOCIAL MEDIA → BOTTOM CENTER (replaces navbar position) */
   .social-bar {
-    top: 18px;
-    right: 14px;
-    transform: none;
+    top: auto;
+    bottom: 14px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
     flex-direction: row;
-    gap: 12px;
+    gap: 14px;
   }
 
   .social-bar a {
@@ -447,6 +451,7 @@ video{
     max-height: 80vh;
   }
 }
+
 
 </style>
 </head>
