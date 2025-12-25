@@ -16,7 +16,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    /* ================= RESET ================= */
+    /* =====================================================
+   RESET & BASE
+===================================================== */
     * {
       margin: 0;
       padding: 0;
@@ -31,7 +33,9 @@
       overflow-x: hidden;
     }
 
-    /* ================= VIDEO BACKGROUND ================= */
+    /* =====================================================
+   VIDEO BACKGROUND
+===================================================== */
     .bg-video {
       position: fixed;
       inset: 0;
@@ -49,8 +53,9 @@
       z-index: -1;
     }
 
-    /* ================= NAVBAR =================
-    /* ================= RADIAN NAVBAR ================= */
+    /* =====================================================
+   NAVBAR (DESKTOP)
+===================================================== */
     .radian-navbar {
       background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(14px);
@@ -72,9 +77,9 @@
     }
 
     .brand-title {
-      color: #fff;
       font-size: 1.3rem;
       letter-spacing: 2px;
+      color: #fff;
     }
 
     .brand-year {
@@ -82,7 +87,7 @@
       color: #1db9ff;
     }
 
-    /* LINKS */
+    /* NAV LINKS */
     .nav-link {
       color: #fff !important;
       font-size: 0.9rem;
@@ -107,19 +112,14 @@
       width: 100%;
     }
 
-    /* TOGGLER */
-    .navbar-toggler {
-      border: none;
-    }
-
-    .navbar-toggler-icon {
-      filter: invert(1);
-    }
-    /* ================= NAVBAR MOBILE FIX ================= */
+    /* =====================================================
+   NAVBAR (MOBILE)
+===================================================== */
     @media (max-width: 991px) {
+
       .radian-navbar {
         height: auto;
-        padding: 10px 0;
+        padding: 8px 0;
       }
 
       .navbar-brand img {
@@ -135,31 +135,50 @@
         font-size: 0.75rem;
       }
 
+      /* TOGGLER */
+      .navbar-toggler {
+        border: none;
+        padding: 6px 10px;
+        z-index: 1001;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      .navbar-toggler-icon {
+        width: 1.5em;
+        height: 1.5em;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.95)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+      }
+
       /* MOBILE MENU */
       .navbar-collapse {
-        background: rgba(0, 0, 0, 0.92);
+        background: rgba(0, 0, 0, 0.95);
         margin-top: 12px;
-        border-radius: 14px;
         padding: 18px 20px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
       }
 
       .navbar-nav {
-        gap: 14px;
+        gap: 16px;
+        text-align: center;
       }
 
       .nav-link {
         font-size: 0.95rem;
         padding: 10px 0;
-        text-align: center;
       }
 
       .nav-link::after {
         display: none;
-        /* cleaner mobile */
       }
     }
-    /* ================= FAQ HEADER ================= */
+
+    /* =====================================================
+   FAQ HEADER
+===================================================== */
     .faq-header {
       text-align: center;
       padding: 120px 20px 40px;
@@ -175,7 +194,9 @@
       color: #9ff;
     }
 
-    /* SEARCH */
+    /* =====================================================
+   SEARCH BAR
+===================================================== */
     .search-box {
       display: flex;
       justify-content: center;
@@ -193,7 +214,9 @@
       color: #0ff;
     }
 
-    /* FAQ LIST */
+    /* =====================================================
+   FAQ LIST
+===================================================== */
     .faq-container {
       max-width: 900px;
       margin: auto;
@@ -217,6 +240,7 @@
       padding: 20px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       cursor: pointer;
     }
 
@@ -256,13 +280,12 @@
       margin-left: 10px;
     }
 
-  /* ================= FOOTER ================= */
-    /* ================= RADIAN FOOTER ================= */
+    /* =====================================================
+   FOOTER
+===================================================== */
     .radian-footer {
       background: linear-gradient(to top, #02040f, #000);
       padding: 90px 50px 30px;
-      position: relative;
-      z-index: 2;
     }
 
     .footer-wrapper {
@@ -291,7 +314,6 @@
     .footer-box li {
       font-size: 0.9rem;
       opacity: 0.85;
-      margin-bottom: 8px;
     }
 
     .footer-box ul {
@@ -300,8 +322,8 @@
     }
 
     .footer-box ul li a {
-      text-decoration: none;
       color: #fff;
+      text-decoration: none;
       transition: 0.3s;
     }
 
@@ -323,9 +345,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
       font-size: 1.2rem;
-      transition: 0.3s ease;
+      color: #fff;
+      transition: 0.3s;
     }
 
     .footer-social a:hover {
@@ -343,7 +365,9 @@
       opacity: 0.7;
     }
 
-    /* RESPONSIVE */
+    /* =====================================================
+   FOOTER RESPONSIVE
+===================================================== */
     @media (max-width: 900px) {
       .footer-wrapper {
         grid-template-columns: 1fr 1fr;
@@ -360,6 +384,190 @@
         justify-content: center;
       }
     }
+
+    /* =====================================================
+   EXTRA SMALL DEVICES (360px & BELOW)
+===================================================== */
+    @media (max-width: 360px) {
+
+      /* ---------- NAVBAR ---------- */
+      .brand-title {
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+      }
+
+      .brand-year {
+        font-size: 0.65rem;
+      }
+
+      .navbar-brand img {
+        width: 30px;
+      }
+
+      .navbar-toggler-icon {
+        width: 1.3em;
+        height: 1.3em;
+      }
+
+      .nav-link {
+        font-size: 0.85rem;
+      }
+
+      /* ---------- FAQ HEADER ---------- */
+      .faq-header {
+        padding: 100px 15px 30px;
+      }
+
+      .faq-header h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+      }
+
+      .faq-header p {
+        font-size: 0.85rem;
+      }
+
+      /* ---------- SEARCH ---------- */
+      .search-box input {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+      }
+
+      /* ---------- FAQ ITEMS ---------- */
+      .faq-question {
+        padding: 16px;
+      }
+
+      .faq-question h3 {
+        font-size: 0.9rem;
+      }
+
+      .faq-icon {
+        font-size: 1.3rem;
+      }
+
+      .faq-answer {
+        font-size: 0.85rem;
+      }
+
+      .tag {
+        font-size: 0.55rem;
+        padding: 3px 8px;
+      }
+
+      /* ---------- FOOTER ---------- */
+      .radian-footer {
+        padding: 70px 20px 25px;
+      }
+
+      .footer-box h2 {
+        font-size: 1.6rem;
+      }
+
+      .footer-box h4 {
+        font-size: 1rem;
+      }
+
+      .footer-box p,
+      .footer-box li {
+        font-size: 0.8rem;
+      }
+
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+
+      .footer-bottom {
+        font-size: 0.75rem;
+      }
+    }
+/* =====================================================
+   NAVBAR EXTREME LEFT / RIGHT (360px & ABOVE)
+===================================================== */
+@media (min-width: 360px) {
+
+  .radian-navbar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .radian-navbar .container-fluid {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between !important;
+    width: 100%;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* BRAND → EXTREME LEFT */
+  .navbar-brand {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+  }
+
+  /* TOGGLER → EXTREME RIGHT */
+  .navbar-toggler {
+    margin: 0 !important;
+    padding: 6px 0 !important;
+  }
+
+  /* Stop collapse from affecting alignment */
+  .navbar-collapse {
+    flex-grow: 0 !important;
+  }
+}
+
+/* =====================================================
+   320px SAFE NAVBAR — EXTREME LEFT / RIGHT
+===================================================== */
+@media (max-width: 360px) {
+
+  /* Kill Bootstrap spacing */
+  .radian-navbar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .radian-navbar .container-fluid {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    margin: 0 !important;
+    width: 100%;
+  }
+
+  /* BRAND → HARD LEFT */
+  .navbar-brand {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 0;
+  }
+
+  /* TOGGLER → HARD RIGHT */
+  .navbar-toggler {
+    margin: 0 !important;
+    padding: 4px 0 !important;
+    position: relative;
+    right: 0;
+  }
+
+  /* Stop collapse from stealing space */
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+}
+
   </style>
 </head>
 
@@ -368,7 +576,7 @@
   <!-- BACKGROUND VIDEO -->
   <video class="bg-video" src="assets/videos/faq.mp4" autoplay muted loop playsinline></video>
   <div class="video-overlay"></div>
- <!-- NAVBAR -->
+  <!-- NAVBAR -->
   <nav class="radian-navbar navbar navbar-expand-lg fixed-top">
     <div class="container-fluid px-5">
       <!-- BRAND -->
@@ -420,58 +628,58 @@
   <section class="faq-container">
 
     <div class="faq-item">
-        <div class="faq-question">
-            <h3>What is RADIAN 2K26? <span class="tag">General</span></h3>
-            <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-answer">
-            RADIAN 2K26 is a national-level technical and cultural fest featuring tech events,
-            workshops, competitions, and non-tech activities.
-        </div>
+      <div class="faq-question">
+        <h3>What is RADIAN 2K26? <span class="tag">General</span></h3>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        RADIAN 2K26 is a national-level technical and cultural fest featuring tech events,
+        workshops, competitions, and non-tech activities.
+      </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-question">
-            <h3>Who can participate? <span class="tag">Eligibility</span></h3>
-            <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-answer">
-            Students from any college and any branch are eligible to participate
-            unless specified otherwise for a particular event.
-        </div>
+      <div class="faq-question">
+        <h3>Who can participate? <span class="tag">Eligibility</span></h3>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        Students from any college and any branch are eligible to participate
+        unless specified otherwise for a particular event.
+      </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-question">
-            <h3>Is registration free? <span class="tag">Registration</span></h3>
-            <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-answer">
-            Some events are free while others have minimal registration fees.
-            Details are available on the respective event pages.
-        </div>
+      <div class="faq-question">
+        <h3>Is registration free? <span class="tag">Registration</span></h3>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        Some events are free while others have minimal registration fees.
+        Details are available on the respective event pages.
+      </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-question">
-            <h3>Will certificates be provided? <span class="tag">Certificates</span></h3>
-            <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-answer">
-            Yes, all participants will receive participation certificates and
-            winners will receive merit certificates.
-        </div>
+      <div class="faq-question">
+        <h3>Will certificates be provided? <span class="tag">Certificates</span></h3>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        Yes, all participants will receive participation certificates and
+        winners will receive merit certificates.
+      </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-question">
-            <h3>Whom should I contact for queries? <span class="tag">Support</span></h3>
-            <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-answer">
-            You can reach out to the event coordinators listed on the Coordinators page
-            or use the Contact section for official queries.
-        </div>
+      <div class="faq-question">
+        <h3>Whom should I contact for queries? <span class="tag">Support</span></h3>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        You can reach out to the event coordinators listed on the Coordinators page
+        or use the Contact section for official queries.
+      </div>
     </div>
   </section>
 
