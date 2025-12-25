@@ -1,500 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>RADIAN 2K26 | EVENTS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <title>RADIAN 2K26 | EVENTS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Bootstrap 5 -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet" />
 
-    <!-- Bootstrap Icons -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <style>
-      /* ================= RESET ================= */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Orbitron", sans-serif;
-      }
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
-      body {
-        color: #fff;
-        overflow-x: hidden;
-        min-height: 100vh;
-        background: #000;
-        padding-top: 90px; /* navbar height (80px) + buffer */
-      }
+  <style>
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Orbitron", sans-serif;
+    }
 
-      /* ================= VIDEO BACKGROUND ================= */
-      .video-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -2;
-      }
+    body {
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background: #000;
+      padding-top: 90px;
+      /* navbar height (80px) + buffer */
+    }
 
-      /* DARK OVERLAY */
-      .video-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.65);
-        z-index: -1;
-      }
+    /* ================= VIDEO BACKGROUND ================= */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
 
-      /* ================= NAVBAR =================
+    /* DARK OVERLAY */
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
+    }
+
+   
+    /* ================= NAVBAR =================
     /* ================= RADIAN NAVBAR ================= */
-      .radian-navbar {
-        background: rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(14px);
-        height: 80px;
-        transition: 0.3s ease;
-      }
+    .radian-navbar {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(14px);
+      height: 80px;
+      transition: 0.3s ease;
+    }
 
-      .radian-navbar.scrolled {
-        background: rgba(0, 0, 0, 0.7);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    .radian-navbar.scrolled {
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar-brand img {
+      width: 42px;
+    }
+
+    .brand-text {
+      line-height: 1;
+    }
+
+    .brand-title {
+      color: #fff;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+    }
+
+    .brand-year {
+      font-size: 0.85rem;
+      color: #1db9ff;
+    }
+
+    /* LINKS */
+    .nav-link {
+      color: #fff !important;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #1db9ff;
+      transition: 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* TOGGLER */
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    /* MOBILE */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.85);
+        margin-top: 10px;
+        border-radius: 12px;
+        padding: 20px;
+      }
+    }
+    /* ================= NAVBAR MOBILE FIX ================= */
+    @media (max-width: 991px) {
+      .radian-navbar {
+        height: auto;
+        padding: 10px 0;
       }
 
       .navbar-brand img {
-        width: 42px;
-      }
-
-      .brand-text {
-        line-height: 1;
+        width: 34px;
       }
 
       .brand-title {
-        color: #fff;
-        font-size: 1.3rem;
-        letter-spacing: 2px;
+        font-size: 1.05rem;
+        letter-spacing: 1px;
       }
 
       .brand-year {
-        font-size: 0.85rem;
-        color: #1db9ff;
+        font-size: 0.75rem;
       }
 
-      /* LINKS */
+      /* MOBILE MENU */
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.92);
+        margin-top: 12px;
+        border-radius: 14px;
+        padding: 18px 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      }
+
+      .navbar-nav {
+        gap: 14px;
+      }
+
       .nav-link {
-        color: #fff !important;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-        position: relative;
-        padding: 8px 0;
+        font-size: 0.95rem;
+        padding: 10px 0;
+        text-align: center;
       }
 
       .nav-link::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 0%;
-        height: 2px;
-        background: #1db9ff;
-        transition: 0.3s ease;
+        display: none;
+        /* cleaner mobile */
+      }
+    }
+    /* EVENTS PAGE TITLE */
+    .events-title {
+      width: 90%;
+      margin: 40px auto 25px;
+    }
+
+    .events-title h1 {
+      font-size: 3rem;
+      letter-spacing: 4px;
+      color: #6fe3ff;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px rgba(0, 240, 255, 0.7),
+        0 0 30px rgba(0, 160, 255, 0.5);
+      position: relative;
+    }
+
+    /* UNDERLINE */
+    .events-title h1::after {
+      content: "";
+      display: block;
+      width: 90px;
+      height: 3px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #00f0ff, #1db9ff);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
+    }
+
+    /* TAB BAR */
+    .event-tabs {
+      width: 90%;
+      margin: 40px auto;
+      display: flex;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    /* EACH TAB */
+    .event-tabs .tab {
+      flex: 1;
+      padding: 14px 0;
+      background: transparent;
+      border: none;
+      color: #9eefff;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .event-tabs .tab:last-child {
+      border-right: none;
+    }
+
+    /* ACTIVE TAB */
+    .event-tabs .tab.active {
+      background: rgba(0, 240, 255, 0.08);
+      color: #00f0ff;
+      box-shadow: inset 0 -2px 0 #00f0ff;
+    }
+
+    /* HOVER */
+    .event-tabs .tab:hover {
+      background: rgba(0, 240, 255, 0.05);
+    }
+
+    /* ================= COMING SOON ================= */
+    .coming-soon {
+      height: 80vh;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glass-card {
+      background: rgba(20, 30, 60, 0.55);
+      border-radius: 20px;
+      padding: 60px 50px;
+      max-width: 600px;
+      box-shadow: 0 0 40px rgba(0, 153, 255, 0.35);
+      backdrop-filter: blur(15px);
+      animation: fadeUp 1.2s ease;
+    }
+
+    .glass-card h1 {
+      font-size: 2.8rem;
+      color: #1db9ff;
+      margin-bottom: 15px;
+    }
+
+    .glass-card p {
+      font-size: 1.1rem;
+      color: #dcdcdc;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
       }
 
-      .nav-link:hover::after,
-      .nav-link.active::after {
-        width: 100%;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      /* TOGGLER */
-      .navbar-toggler {
-        border: none;
-      }
+    }
 
-      .navbar-toggler-icon {
-        filter: invert(1);
-      }
+   
+  /* ================= FOOTER ================= */
+    /* ================= RADIAN FOOTER ================= */
+    .radian-footer {
+      background: linear-gradient(to top, #02040f, #000);
+      padding: 90px 50px 30px;
+      position: relative;
+      z-index: 2;
+    }
 
-      /* MOBILE */
-      @media (max-width: 991px) {
-        .navbar-collapse {
-          background: rgba(0, 0, 0, 0.85);
-          margin-top: 10px;
-          border-radius: 12px;
-          padding: 20px;
-        }
-      }
-      /* EVENTS PAGE TITLE */
-      .events-title {
-        width: 90%;
-        margin: 40px auto 25px;
-      }
+    .footer-wrapper {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 50px;
+    }
 
-      .events-title h1 {
-        font-size: 3rem;
-        letter-spacing: 4px;
-        color: #6fe3ff;
-        text-transform: uppercase;
-        text-shadow: 0 0 12px rgba(0, 240, 255, 0.7),
-          0 0 30px rgba(0, 160, 255, 0.5);
-        position: relative;
-      }
+    .footer-box h2 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
 
-      /* UNDERLINE */
-      .events-title h1::after {
-        content: "";
-        display: block;
-        width: 90px;
-        height: 3px;
-        margin-top: 12px;
-        background: linear-gradient(90deg, #00f0ff, #1db9ff);
-        box-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
-      }
+    .footer-box h2 span {
+      color: #1db9ff;
+    }
 
-      /* TAB BAR */
-      .event-tabs {
-        width: 90%;
-        margin: 40px auto;
-        display: flex;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        background: rgba(10, 15, 30, 0.7);
-        backdrop-filter: blur(12px);
-      }
+    .footer-box h4 {
+      margin-bottom: 15px;
+      color: #1db9ff;
+    }
 
-      /* EACH TAB */
-      .event-tabs .tab {
-        flex: 1;
-        padding: 14px 0;
-        background: transparent;
-        border: none;
-        color: #9eefff;
-        letter-spacing: 2px;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: 0.3s ease;
-        border-right: 1px solid rgba(255, 255, 255, 0.12);
-      }
+    .footer-box p,
+    .footer-box li {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
 
-      .event-tabs .tab:last-child {
-        border-right: none;
-      }
+    .footer-box ul {
+      list-style: none;
+      padding: 0;
+    }
 
-      /* ACTIVE TAB */
-      .event-tabs .tab.active {
-        background: rgba(0, 240, 255, 0.08);
-        color: #00f0ff;
-        box-shadow: inset 0 -2px 0 #00f0ff;
-      }
+    .footer-box ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
 
-      /* HOVER */
-      .event-tabs .tab:hover {
-        background: rgba(0, 240, 255, 0.05);
-      }
+    .footer-box ul li a:hover {
+      color: #1db9ff;
+      padding-left: 6px;
+    }
 
-      /* ================= COMING SOON ================= */
-      .coming-soon {
-        height: 80vh;
-        position: relative;
-        z-index: 2;
-      }
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
 
-      .glass-card {
-        background: rgba(20, 30, 60, 0.55);
-        border-radius: 20px;
-        padding: 60px 50px;
-        max-width: 600px;
-        box-shadow: 0 0 40px rgba(0, 153, 255, 0.35);
-        backdrop-filter: blur(15px);
-        animation: fadeUp 1.2s ease;
-      }
+    .footer-social a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: 0.3s ease;
+    }
 
-      .glass-card h1 {
-        font-size: 2.8rem;
-        color: #1db9ff;
-        margin-bottom: 15px;
-      }
+    .footer-social a:hover {
+      background: #1db9ff;
+      border-color: #1db9ff;
+      transform: translateY(-5px);
+    }
 
-      .glass-card p {
-        font-size: 1.1rem;
-        color: #dcdcdc;
-      }
+    .footer-bottom {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
 
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* ================= FOOTER ================= */
-      /* ================= RADIAN FOOTER ================= */
-      .radian-footer {
-        background: linear-gradient(to top, #02040f, #000);
-        padding: 90px 50px 30px;
-        position: relative;
-        z-index: 2;
-      }
-
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
       .footer-wrapper {
-        max-width: 1300px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 50px;
+        grid-template-columns: 1fr 1fr;
       }
+    }
 
-      .footer-box h2 {
-        font-size: 2rem;
-        letter-spacing: 2px;
-      }
-
-      .footer-box h2 span {
-        color: #1db9ff;
-      }
-
-      .footer-box h4 {
-        margin-bottom: 15px;
-        color: #1db9ff;
-      }
-
-      .footer-box p,
-      .footer-box li {
-        font-size: 0.9rem;
-        opacity: 0.85;
-        margin-bottom: 8px;
-      }
-
-      .footer-box ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      .footer-box ul li a {
-        text-decoration: none;
-        color: #fff;
-        transition: 0.3s;
-      }
-
-      .footer-box ul li a:hover {
-        color: #1db9ff;
-        padding-left: 6px;
+    @media (max-width: 600px) {
+      .footer-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
 
       .footer-social {
-        display: flex;
-        gap: 15px;
-      }
-
-      .footer-social a {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        display: flex;
-        align-items: center;
         justify-content: center;
-        color: #fff;
-        font-size: 1.2rem;
-        transition: 0.3s ease;
       }
+    }
+  </style>
+</head>
 
-      .footer-social a:hover {
-        background: #1db9ff;
-        border-color: #1db9ff;
-        transform: translateY(-5px);
-      }
+<body>
+  <!-- 🎥 BACKGROUND VIDEO -->
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="assets/videos/eventbg.mp4" type="video/mp4" />
+  </video>
 
-      .footer-bottom {
-        margin-top: 50px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-        text-align: center;
-        font-size: 0.85rem;
-        opacity: 0.7;
-      }
+  <!-- OVERLAY -->
+  <div class="video-overlay"></div>
+  <!-- NAVBAR -->
+  <nav class="radian-navbar navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-5">
+      <!-- BRAND -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+        <img src="assets/images/radian_logo.png" alt="RADIAN Logo" />
+        <div class="brand-text">
+          <span class="brand-title">RADIAN</span>
+          <span class="brand-year">2K26</span>
+        </div>
+      </a>
 
-      /* RESPONSIVE */
-      @media (max-width: 900px) {
-        .footer-wrapper {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
+      <!-- TOGGLER -->
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#radianNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      @media (max-width: 600px) {
-        .footer-wrapper {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
+      <!-- LINKS -->
+      <div class="collapse navbar-collapse justify-content-end" id="radianNav">
+        <ul class="navbar-nav gap-4">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="coordinators.html">Coordinators</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="faq.html">FAQ's</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script>
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector(".radian-navbar");
+      nav.classList.toggle("scrolled", window.scrollY > 30);
+    });
+  </script>
 
-        .footer-social {
-          justify-content: center;
-        }
-      }
-    </style>
-  </head>
+  <!-- EVENTS -->
+  <div class="events-title">
+    <h1>EVENTS</h1>
+  </div>
+  <!-- EVENTS TAB-->
+  <div class="event-tabs">
+    <button class="tab active" data-tab="centerstage">TECHNICAL</button>
+    <button class="tab" data-tab="departmental">NON TECHNICAL</button>
+  </div>
+  <!-- EVENTS CONTENT -->
+  <div class="coming-soon d-flex justify-content-center align-items-center">
+    <div class="glass-card text-center">
+      <h1>Coming Soon</h1>
+      <p>Exciting events and activities are on their way. Stay tuned!</p>
+    </div>
+  </div>
 
-  <body>
-    <!-- 🎥 BACKGROUND VIDEO -->
-    <video class="video-bg" autoplay muted loop playsinline>
-      <source src="assets/videos/eventbg.mp4" type="video/mp4" />
-    </video>
+  <!-- FOOTER -->
+  <footer class="radian-footer">
+    <div class="footer-wrapper">
+      <!-- BRAND -->
+      <div class="footer-box brand">
+        <h2>RADIAN <span>2K26</span></h2>
+        <p>
+          National Level Technical & Cultural Fest<br />
+          Department of Information Technology<br />
+          ANITS, Visakhapatnam
+        </p>
+      </div>
 
-    <!-- OVERLAY -->
-    <div class="video-overlay"></div>
-    <nav class="radian-navbar navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid px-5">
-        <!-- BRAND -->
-        <a
-          class="navbar-brand d-flex align-items-center gap-2"
-          href="home.html"
-        >
-          <img src="assets/images/radian_logo.png" alt="RADIAN Logo" />
-          <div class="brand-text">
-            <span class="brand-title">RADIAN</span>
-            <span class="brand-year">2K26</span>
-          </div>
-        </a>
+      <!-- QUICK LINKS -->
+      <div class="footer-box">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="coordinators.html">Coordinators</a></li>
+          <li><a href="faq.html">FAQ's</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
 
-        <!-- TOGGLER -->
-        <button
-          class="navbar-toggler text-white"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#radianNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <!-- CONTACT -->
+      <div class="footer-box">
+        <h4>Contact</h4>
+        <p><i class="bi bi-geo-alt"></i> ANITS, Sangivalasa</p>
+        <p><i class="bi bi-envelope"></i> radian@anits.edu.in</p>
+      </div>
 
-        <!-- LINKS -->
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="radianNav"
-        >
-          <ul class="navbar-nav gap-4">
-            <li class="nav-item">
-              <a class="nav-link" href="home.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="coordinators.html">Coordinators</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="faq.html">FAQ's</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contacts</a>
-            </li>
-          </ul>
+      <!-- SOCIAL -->
+      <div class="footer-box">
+        <h4>Follow Us</h4>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/radian_2k26?igsh=MXRhNjQ1a29hY3Jraw=="><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
         </div>
       </div>
-    </nav>
-    <script>
-      window.addEventListener("scroll", () => {
-        const nav = document.querySelector(".radian-navbar");
-        nav.classList.toggle("scrolled", window.scrollY > 30);
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 <strong>RADIAN 2K26 IT DEPARTMENT</strong> - All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+        contents.forEach((c) => c.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).classList.add("active");
       });
-    </script>
+    });
+  </script>
+</body>
 
-    <!-- EVENTS -->
-    <div class="events-title">
-      <h1>EVENTS</h1>
-    </div>
-    <!-- EVENTS TAB-->
-    <div class="event-tabs">
-      <button class="tab active" data-tab="centerstage">TECHNICAL</button>
-      <button class="tab" data-tab="departmental">NON TECHNICAL</button>
-    </div>
-    <!-- EVENTS CONTENT -->
-    <div class="coming-soon d-flex justify-content-center align-items-center">
-      <div class="glass-card text-center">
-        <h1>Coming Soon</h1>
-        <p>Exciting events and activities are on their way. Stay tuned!</p>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="radian-footer">
-      <div class="footer-wrapper">
-        <!-- BRAND -->
-        <div class="footer-box brand">
-          <h2>RADIAN <span>2K26</span></h2>
-          <p>
-            National Level Technical & Cultural Fest<br />
-            Department of Information Technology<br />
-            ANITS, Visakhapatnam
-          </p>
-        </div>
-
-        <!-- QUICK LINKS -->
-        <div class="footer-box">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="coordinators.html">Coordinators</a></li>
-            <li><a href="faq.html">FAQ's</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- CONTACT -->
-        <div class="footer-box">
-          <h4>Contact</h4>
-          <p><i class="bi bi-geo-alt"></i> ANITS, Sangivalasa</p>
-          <p><i class="bi bi-envelope"></i> radian@anits.edu.in</p>
-          <p><i class="bi bi-telephone"></i> +91 9XXXXXXXXX</p>
-        </div>
-
-        <!-- SOCIAL -->
-        <div class="footer-box">
-          <h4>Follow Us</h4>
-          <div class="footer-social">
-            <a
-              href="https://www.instagram.com/radian_2k26?igsh=MXRhNjQ1a29hY3Jraw=="
-              ><i class="bi bi-instagram"></i
-            ></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
-            <a href="#"><i class="bi bi-facebook"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        © 2026 <strong>RADIAN 2K26 IT DEPARTMENT</strong> · All Rights Reserved
-      </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-      const tabs = document.querySelectorAll(".tab");
-      const contents = document.querySelectorAll(".tab-content");
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          tabs.forEach((t) => t.classList.remove("active"));
-          contents.forEach((c) => c.classList.remove("active"));
-
-          tab.classList.add("active");
-          document.getElementById(tab.dataset.tab).classList.add("active");
-        });
-      });
-    </script>
-  </body>
 </html>
