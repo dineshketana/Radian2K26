@@ -271,6 +271,13 @@
       gap: 35px;
     }
 
+    /* Desktop / Laptop / PC view */
+    @media (min-width: 1024px) {
+      .coordinator-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     /* CARD */
     .coordinator-card {
       background: rgba(255, 255, 255, 0.06);
@@ -307,8 +314,7 @@
 
     /* IMAGE */
     /* BIG PROFILE IMAGE */
-    .coordinator-card img,
-    .hod-card img {
+    .coordinator-card img {
       width: 290px;
       /* increase size */
       height: 290px;
@@ -552,7 +558,7 @@
     <h2 class="coordinator-title">Faculty Coordinators</h2>
     <div class="coordinator-grid">
       <div class="coordinator-card">
-        <img src="assets/images/coordinators/rpsir.jpeg" />
+        <img src="assets/images/coordinators/rp_sir.png" />
         <h3>Mr Reddi Prasadu</h3>
         <span>Faculty Coordinator</span>
         <a href="tel:+919848565696">+91 9848565696</a>
@@ -583,7 +589,7 @@
       </div>
       <div class="coordinator-card">
         <img src="assets/images/coordinators/Amrutha_Student.jpeg" />
-        <h3>B.Amrutha</h3>
+        <h3>B. Amrutha</h3>
         <span>Fest Coordinator </span>
         <a href="tel:+91 9391538862">+91 9391538862</a>
       </div>
@@ -592,6 +598,18 @@
         <h3>M. Bharath</h3>
         <span>Fest Coordinator </span>
         <a href="tel:+91 9063249434">+91 9063249434</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/rahul_student.jpg" />
+        <h3>A. Rahul</h3>
+        <span>Fest Coordinator </span>
+        <a href="tel:+91 7816019594 ">+91 7816019594 </a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/coordinators/" />
+        <h3>M. Chanakya</h3>
+        <span>Fest Coordinator </span>
+        <a href="tel:+91 9121987140">+91 9121987140</a>
       </div>
     </div>
 
@@ -632,6 +650,12 @@
     <h2 class="coordinator-title">FlashMOB Coordinators</h2>
     <div class="coordinator-grid">
       <div class="coordinator-card">
+        <img src="assets/images/coordinators/himabindu_student.jpeg" />
+        <h3>M. Hima Bindu</h3>
+        <span>FlashMob Lead</span>
+        <a href="tel:+918897714476">+91 8897714476</a>
+      </div>
+      <div class="coordinator-card">
         <img src="assets/images/coordinators/aarif_student.png" />
         <h3>MD. Aarif</h3>
         <span>FlashMob Lead</span>
@@ -649,6 +673,12 @@
         <span>FlashMob Lead</span>
         <a href="tel:+919550156981">+91 9550156981</a>
       </div>
+      <div class="coordinator-card">
+        <img src="assets/images/Sharmila_Student.jpg" />
+        <h3>P. Jenin</h3>
+        <span>FlashMob Lead</span>
+        <a href="tel:+918885217895">+91 8885217895</a>
+      </div>
     </div>
 
     <!-- ================= DECORATION ================= -->
@@ -662,16 +692,34 @@
       </div>
       <div class="coordinator-card">
         <img src="assets/images/coordinators/gayathri_student.jpg" />
-        <h3>Gayathri Vaddi</h3>
+        <h3>V. Gayathri</h3>
         <span>Decoration Lead</span>
-        <a href="tel:+919705731010">+919705731010</a>
+        <a href="tel:+919705731010">+91 9705731010</a>
       </div>
       <div class="coordinator-card">
         <img src="assets/images/Sharmila_Student.jpg" />
         <h3>A. Khyathi Setty</h3>
         <span>Decoration Lead</span>
-        <a href="tel:+919949564557">+919949564557</a>
+        <a href="tel:+919949564557">+91 9949564557</a>
       </div>
+      <div class="coordinator-card">
+        <img src="assets/images/Sharmila_Student.jpg" />
+        <h3>A. Thirumal Rao</h3>
+        <span>Decoration Lead</span>
+        <a href="tel:+919063909071">+91 9063909071</a>
+      </div>
+      <div class="coordinator-card">
+        <img src="assets/images/Sharmila_Student.jpg" />
+        <h3>C. Ajay</h3>
+        <span>Decoration Lead</span>
+        <a href="tel:+918978469431">+91 8978469431</a>
+      </div>
+      <!-- <div class="coordinator-card">
+        <img src="assets/images/coordinators/abhishek_student.jpg" />
+        <h3>Abhishek Bodda</h3>
+        <span>Decoration Lead</span>
+        <a href="tel:+917730945987">+91 7730945987</a>
+      </div> -->
     </div>
 
     <!-- ================= CULTURALS  ================= -->
@@ -679,9 +727,9 @@
     <div class="coordinator-grid">
       <div class="coordinator-card">
         <img src="assets/images/coordinators/Sharmila_Student.jpg" />
-        <h3>T.Sharmila</h3>
+        <h3>T. Sharmila</h3>
         <span>Culturals Lead</span>
-        <a href="tel:+916305649349">+916305649349</a>
+        <a href="tel:+916305649349">+91 6305649349</a>
       </div>
     </div>
     <!-- ================= BUDGET ================= -->
@@ -689,13 +737,13 @@
     <div class="coordinator-grid">
       <div class="coordinator-card">
         <img src="assets/images/coordinators/abhishek_student.jpg" />
-        <h3>Abhishek Bodda</h3>
+        <h3>B. Abhishek</h3>
         <span>Budget Lead</span>
-        <a href="tel:+917730945987">+917730945987</a>
+        <a href="tel:+917730945987">+91 7730945987</a>
       </div>
     </div>
-        <!-- ================= SOUVENIR  ================= -->
-    <h2 class="coordinator-title">SOUVENIR  Coordinator</h2>
+    <!-- ================= SOUVENIR  ================= -->
+    <h2 class="coordinator-title">SOUVENIR Coordinator</h2>
     <div class="coordinator-grid">
       <div class="coordinator-card">
         <img src="assets/images/" />
