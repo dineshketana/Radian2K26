@@ -37,7 +37,7 @@
       z-index: -2;
     }
 
-  /* ================= NAVBAR =================
+    /* ================= NAVBAR =================
     /* ================= RADIAN NAVBAR ================= */
     .radian-navbar {
       background: rgba(0, 0, 0, 0.35);
@@ -103,6 +103,7 @@
     .navbar-toggler-icon {
       filter: invert(1);
     }
+
     /* ================= NAVBAR MOBILE FIX ================= */
     @media (max-width: 991px) {
       .radian-navbar {
@@ -147,6 +148,7 @@
         /* cleaner mobile */
       }
     }
+
     /* ================= HEADER ================= */
     .contact-header {
       text-align: center;
@@ -258,7 +260,7 @@
       }
     }
 
-   /* ================= FOOTER ================= */
+    /* ================= FOOTER ================= */
     /* ================= RADIAN FOOTER ================= */
     .radian-footer {
       background: linear-gradient(to top, #02040f, #000);
@@ -362,206 +364,207 @@
         justify-content: center;
       }
     }
+
     /* =====================================================
    NAVBAR EXTREME LEFT / RIGHT (360px & ABOVE)
 ===================================================== */
-@media (min-width: 360px) {
+    @media (min-width: 360px) {
 
-  .radian-navbar {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+      .radian-navbar {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
 
-  .radian-navbar .container-fluid {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between !important;
-    width: 100%;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
+      .radian-navbar .container-fluid {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between !important;
+        width: 100%;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
 
-  /* BRAND → EXTREME LEFT */
-  .navbar-brand {
-    margin: 0 !important;
-    padding: 0 !important;
-    display: flex;
-    align-items: center;
-  }
+      /* BRAND → EXTREME LEFT */
+      .navbar-brand {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex;
+        align-items: center;
+      }
 
-  /* TOGGLER → EXTREME RIGHT */
-  .navbar-toggler {
-    margin: 0 !important;
-    padding: 6px 0 !important;
-  }
+      /* TOGGLER → EXTREME RIGHT */
+      .navbar-toggler {
+        margin: 0 !important;
+        padding: 6px 0 !important;
+      }
 
-  /* Stop collapse from affecting alignment */
-  .navbar-collapse {
-    flex-grow: 0 !important;
-  }
-}
+      /* Stop collapse from affecting alignment */
+      .navbar-collapse {
+        flex-grow: 0 !important;
+      }
+    }
 
-/* =====================================================
+    /* =====================================================
    320px SAFE NAVBAR — EXTREME LEFT / RIGHT
 ===================================================== */
-@media (max-width: 360px) {
+    @media (max-width: 360px) {
 
-  /* Kill Bootstrap spacing */
-  .radian-navbar {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+      /* Kill Bootstrap spacing */
+      .radian-navbar {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
 
-  .radian-navbar .container-fluid {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    margin: 0 !important;
-    width: 100%;
-  }
+      .radian-navbar .container-fluid {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        margin: 0 !important;
+        width: 100%;
+      }
 
-  /* BRAND → HARD LEFT */
-  .navbar-brand {
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative;
-    left: 0;
-  }
+      /* BRAND → HARD LEFT */
+      .navbar-brand {
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative;
+        left: 0;
+      }
 
-  /* TOGGLER → HARD RIGHT */
-  .navbar-toggler {
-    margin: 0 !important;
-    padding: 4px 0 !important;
-    position: relative;
-    right: 0;
-  }
+      /* TOGGLER → HARD RIGHT */
+      .navbar-toggler {
+        margin: 0 !important;
+        padding: 4px 0 !important;
+        position: relative;
+        right: 0;
+      }
 
-  /* Stop collapse from stealing space */
-  .navbar-collapse {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-  }
-}
-/* =====================================================
+      /* Stop collapse from stealing space */
+      .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    /* =====================================================
    GLOBAL MOBILE OPTIMIZATION
 ===================================================== */
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-  body {
-    font-size: 14px;
-  }
+      body {
+        font-size: 14px;
+      }
 
-  /* HEADER */
-  .contact-header {
-    padding: 100px 16px 30px;
-  }
+      /* HEADER */
+      .contact-header {
+        padding: 100px 16px 30px;
+      }
 
-  .contact-header h1 {
-    font-size: 2.1rem;
-    letter-spacing: 2px;
-  }
+      .contact-header h1 {
+        font-size: 2.1rem;
+        letter-spacing: 2px;
+      }
 
-  .contact-header p {
-    font-size: 0.85rem;
-  }
+      .contact-header p {
+        font-size: 0.85rem;
+      }
 
-  /* COMMON BLOCK */
-  .block {
-    margin: 20px 14px;
-    padding: 22px;
-    border-radius: 16px;
-  }
+      /* COMMON BLOCK */
+      .block {
+        margin: 20px 14px;
+        padding: 22px;
+        border-radius: 16px;
+      }
 
-  .block h2 {
-    font-size: 1.4rem;
-    text-align: center;
-  }
+      .block h2 {
+        font-size: 1.4rem;
+        text-align: center;
+      }
 
-  /* INFO GRID */
-  .info-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    text-align: center;
-  }
+      /* INFO GRID */
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+      }
 
-  .info-item span {
-    font-size: 0.8rem;
-  }
+      .info-item span {
+        font-size: 0.8rem;
+      }
 
-  .info-item p {
-    font-size: 0.85rem;
-  }
+      .info-item p {
+        font-size: 0.85rem;
+      }
 
-  /* SOCIAL ICON ALIGN */
-  .footer-social {
-    justify-content: center;
-  }
+      /* SOCIAL ICON ALIGN */
+      .footer-social {
+        justify-content: center;
+      }
 
-  /* MAP */
-  .map-container {
-    height: 260px;
-  }
+      /* MAP */
+      .map-container {
+        height: 260px;
+      }
 
-  /* FORM */
-  .form-grid input,
-  .form-grid textarea {
-    font-size: 0.9rem;
-  }
+      /* FORM */
+      .form-grid input,
+      .form-grid textarea {
+        font-size: 0.9rem;
+      }
 
-  .form-grid button {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-  }
-}
+      .form-grid button {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+      }
+    }
 
-/* =====================================================
+    /* =====================================================
    SMALL PHONES (≤360px)
 ===================================================== */
-@media (max-width: 360px) {
+    @media (max-width: 360px) {
 
-  .contact-header h1 {
-    font-size: 1.8rem;
-  }
+      .contact-header h1 {
+        font-size: 1.8rem;
+      }
 
-  .block {
-    padding: 18px;
-  }
+      .block {
+        padding: 18px;
+      }
 
-  .map-container {
-    height: 220px;
-  }
+      .map-container {
+        height: 220px;
+      }
 
-  .form-grid textarea {
-    height: 100px;
-  }
-}
+      .form-grid textarea {
+        height: 100px;
+      }
+    }
 
-/* =====================================================
+    /* =====================================================
    FOOTER RESPONSIVE TWEAK
 ===================================================== */
-@media (max-width: 600px) {
+    @media (max-width: 600px) {
 
-  .radian-footer {
-    padding: 70px 20px 25px;
-  }
+      .radian-footer {
+        padding: 70px 20px 25px;
+      }
 
-  .footer-box h2 {
-    font-size: 1.6rem;
-  }
+      .footer-box h2 {
+        font-size: 1.6rem;
+      }
 
-  .footer-box h4 {
-    font-size: 1rem;
-  }
+      .footer-box h4 {
+        font-size: 1rem;
+      }
 
-  .footer-bottom {
-    font-size: 0.75rem;
-  }
-}
-
+      .footer-bottom {
+        font-size: 0.75rem;
+      }
+    }
   </style>
 </head>
 
@@ -633,7 +636,9 @@
         <span>Social</span>
         <div class="footer-social">
           <a href="https://www.instagram.com/radian_2k26?igsh=MXRhNjQ1a29hY3Jraw=="><i class="bi bi-instagram"></i></a>
-          <h6 style="margin-top: 11px;">Instagram</h6>
+          <a href="https://www.linkedin.com/company/anil-neerukonda-institute-of-technology-sciences/about/"><i
+              class="bi bi-linkedin"></i></a>
+          <a href="https://wa.link/gqujck"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
     </div>
@@ -698,7 +703,8 @@
         <h4>Follow Us</h4>
         <div class="footer-social">
           <a href="https://www.instagram.com/radian_2k26?igsh=MXRhNjQ1a29hY3Jraw=="><i class="bi bi-instagram"></i></a>
-          <a href="https://www.linkedin.com/company/anil-neerukonda-institute-of-technology-sciences/about/"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.linkedin.com/company/anil-neerukonda-institute-of-technology-sciences/about/"><i
+              class="bi bi-linkedin"></i></a>
           <a href="https://wa.link/gqujck"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
