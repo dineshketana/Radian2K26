@@ -430,6 +430,17 @@ video{
     flex-direction: row;
     gap: 14px;
   }
+  /* Full-width dark shade for bottom dock */
+  .social-bar {
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    padding: 12px 18px;
+    background: rgba(10,10,30,0.85);
+    border-radius: 22px;
+    backdrop-filter: blur(12px);
+    box-shadow:
+      0 0 20px rgba(0,240,255,0.25),
+      inset 0 0 15px rgba(0,180,255,0.2);
+  }
 
   .social-bar a {
     width: 40px;
