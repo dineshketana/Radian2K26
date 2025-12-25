@@ -490,6 +490,91 @@
         justify-content: center;
       }
     }
+    /* =====================================================
+   NAVBAR EXTREME LEFT / RIGHT (360px & ABOVE)
+===================================================== */
+@media (min-width: 360px) {
+
+  .radian-navbar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .radian-navbar .container-fluid {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between !important;
+    width: 100%;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* BRAND → EXTREME LEFT */
+  .navbar-brand {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+  }
+
+  /* TOGGLER → EXTREME RIGHT */
+  .navbar-toggler {
+    margin: 0 !important;
+    padding: 6px 0 !important;
+  }
+
+  /* Stop collapse from affecting alignment */
+  .navbar-collapse {
+    flex-grow: 0 !important;
+  }
+}
+
+/* =====================================================
+   320px SAFE NAVBAR — EXTREME LEFT / RIGHT
+===================================================== */
+@media (max-width: 360px) {
+
+  /* Kill Bootstrap spacing */
+  .radian-navbar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .radian-navbar .container-fluid {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    margin: 0 !important;
+    width: 100%;
+  }
+
+  /* BRAND → HARD LEFT */
+  .navbar-brand {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    left: 0;
+  }
+
+  /* TOGGLER → HARD RIGHT */
+  .navbar-toggler {
+    margin: 0 !important;
+    padding: 4px 0 !important;
+    position: relative;
+    right: 0;
+  }
+
+  /* Stop collapse from stealing space */
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+}
+
   </style>
 </head>
 
