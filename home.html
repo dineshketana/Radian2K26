@@ -441,36 +441,37 @@ video{
     font-size: 0.7rem;
     margin-bottom: 8px;
   }
-
-  /* Countdown box slimmer */
-  .countdown-box{
-    margin-top: 18px;
-    padding: 14px;
-    border-radius: 14px;
-  }
+/* Countdown box slimmer */
+.countdown-box{
+  margin-top: 16px;          /* slightly tighter */
+  padding: 12px;             /* reduced padding */
+  border-radius: 14px;
+}
 
 /* Countdown layout – force single line (360px) */
 .countdown{
   gap: 6px;
-  flex-wrap: nowrap;      /* keep all in one line */
+  flex-wrap: nowrap;         /* keep all in one line */
+  justify-content: center;
 }
 
 /* Time box slightly smaller */
 .time-box{
-  width: 54px;
-  height: 54px;
+  width: 52px;               /* key change */
+  height: 52px;
   border-radius: 10px;
 }
 
 /* Number size */
 .time-box span{
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 /* Label size */
 .time-box small{
   font-size: 0.55rem;
 }
+
 
   /* Navbar icons tighter */
   .navbar-left ul{
@@ -609,6 +610,41 @@ video{
     max-height: 68vh;
   }
 
+}
+/* ================= COUNTDOWN: 360px AND ABOVE ================= */
+@media (min-width: 360px) {
+
+  /* Countdown box */
+  .countdown-box{
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  /* Countdown layout – ONE LINE */
+  .countdown{
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: nowrap;      /* always single line */
+  }
+
+  /* Time box */
+  .time-box{
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+  }
+
+  /* Number */
+  .time-box span{
+    font-size: 1.05rem;
+  }
+
+  /* Label */
+  .time-box small{
+    font-size: 0.55rem;
+  }
 }
 
 </style>
