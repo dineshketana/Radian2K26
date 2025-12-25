@@ -739,51 +739,55 @@
       © 2026 <strong>RADIAN 2K26 IT DEPARTMENT</strong> - All Rights Reserved
     </div>
   </footer>
-
   <script>
-    const tabs = document.querySelectorAll(".tab");
-    const sections = document.querySelectorAll(".events-section");
+const tabs = document.querySelectorAll(".tab");
+const sections = document.querySelectorAll(".events-section");
 
-    tabs.forEach(tab => {
-      tab.onclick = () => {
-        tabs.forEach(t => t.classList.remove("active"));
-        sections.forEach(s => s.classList.remove("active"));
-        tab.classList.add("active");
-        document.getElementById(tab.dataset.tab).classList.add("active");
-      };
-    });
+tabs.forEach(tab => {
+  tab.onclick = () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    sections.forEach(s => s.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
+  };
+});
 
-    const modal = document.getElementById("posterModal");
-    const img = document.getElementById("modalImg");
-    const title = document.getElementById("modalTitle");
-    const desc = document.getElementById("modalDesc");
-    const link = document.getElementById("modalLink");
+const modal = document.getElementById("posterModal");
+const img = document.getElementById("modalImg");
+const title = document.getElementById("modalTitle");
+const desc = document.getElementById("modalDesc");
+const link = document.getElementById("modalLink");
 
-    document.querySelectorAll(".event-card").forEach(card => {
-      card.onclick = () => {
-        img.src = card.dataset.img;
-        title.textContent = card.dataset.title;
-        desc.textContent = card.dataset.desc;
+document.querySelectorAll(".event-card").forEach(card => {
+  card.onclick = () => {
+    img.src = card.dataset.img;
+    title.textContent = card.dataset.title;
+    desc.textContent = card.dataset.desc;
 
-        // ✅ THIS IS CRITICAL
-        if (card.dataset.link && card.dataset.link.trim() !== "") {
-          link.href = card.dataset.link;
-          link.style.display = "inline-block";
-        } else {
-          link.removeAttribute("href");
-          link.style.display = "none";
-        }
+    if (card.dataset.link && card.dataset.link.trim() !== "") {
+      link.href = card.dataset.link;
+      link.style.display = "inline-block";
+    } else {
+      link.style.display = "none";
+    }
 
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden";
-      };
-    });
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  };
+});
 
+document.querySelector(".close-btn").onclick = () => {
+  modal.style.display = "none";
+  document.body.style.overflow = "";
+};
 
-    document.querySelector(".close-btn").onclick = () => modal.style.display = "none";
-    modal.onclick = e => e.target === modal && (modal.style.display = "none");
-  </script>
-
+modal.onclick = (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+};
+</script>
 
 </body>
 
