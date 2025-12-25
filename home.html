@@ -449,24 +449,28 @@ video{
     border-radius: 14px;
   }
 
-  /* Countdown layout stack */
-  .countdown{
-    gap: 8px;
-  }
+/* Countdown layout – force single line (360px) */
+.countdown{
+  gap: 6px;
+  flex-wrap: nowrap;      /* keep all in one line */
+}
 
-  .time-box{
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-  }
+/* Time box slightly smaller */
+.time-box{
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+}
 
-  .time-box span{
-    font-size: 1.2rem;
-  }
+/* Number size */
+.time-box span{
+  font-size: 1.1rem;
+}
 
-  .time-box small{
-    font-size: 0.6rem;
-  }
+/* Label size */
+.time-box small{
+  font-size: 0.55rem;
+}
 
   /* Navbar icons tighter */
   .navbar-left ul{
