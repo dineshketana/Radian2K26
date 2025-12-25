@@ -415,6 +415,100 @@ video{
     padding:12px 18px;
   }
 }
+/* ================= EXTRA SMALL DEVICES ================= */
+@media (max-width: 360px) {
+
+  /* Reduce overall vertical crowding */
+  .overlay{
+    padding-top: 80px;
+    justify-content: flex-start;
+  }
+
+  /* Main title tighter */
+  .title{
+    font-size: 2.1rem;
+    letter-spacing: 1.5px;
+  }
+
+  /* Subtitles tighter */
+  .subtitle{
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+    margin-top: 6px;
+  }
+
+  .date{
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+  }
+
+  /* Countdown box slimmer */
+  .countdown-box{
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  /* Countdown layout stack */
+  .countdown{
+    gap: 8px;
+  }
+
+  .time-box{
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+  }
+
+  .time-box span{
+    font-size: 1.2rem;
+  }
+
+  .time-box small{
+    font-size: 0.6rem;
+  }
+
+  /* Navbar icons tighter */
+  .navbar-left ul{
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .navbar-left ul li{
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar-left ul li .icon{
+    font-size: 20px;
+  }
+
+  /* Poster button centered & smaller */
+  .poster-btn{
+    bottom: 75px;
+    font-size: 0.7rem;
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+
+  /* Social bar smaller */
+  .social-bar{
+    padding: 10px 14px;
+    gap: 12px;
+  }
+
+  .social-bar a{
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  /* Poster image fit */
+  .poster-box img{
+    max-height: 72vh;
+  }
+
+}
 
 </style>
 <body>
