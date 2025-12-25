@@ -496,37 +496,6 @@ video{
       </div>
     </div>
   </div>
-
-  <script>
-    const targetDate = new Date("January 8, 2026 09:00:00").getTime();
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = targetDate - now;
-
-      if (diff <= 0) return;
-
-      document.getElementById("days").innerText =
-        Math.floor(diff / (1000 * 60 * 60 * 24));
-
-      document.getElementById("hours").innerText =
-        Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-      document.getElementById("minutes").innerText =
-        Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-      document.getElementById("seconds").innerText =
-        Math.floor((diff % (1000 * 60)) / 1000);
-    }, 1000);
-
-    function openPoster() {
-      document.getElementById("posterOverlay").classList.add("active");
-    }
-
-    function closePoster() {
-      document.getElementById("posterOverlay").classList.remove("active");
-    }
-  </script>
   <!-- VIEW POSTER BUTTON -->
   <button class="poster-btn" onclick="openPoster()">
     Click Here For Surprise
@@ -539,6 +508,79 @@ video{
       <img src="assets/images/radian_2k26_poster_2.png" alt="RADIAN 2K26 Poster">
     </div>
   </div>
+<script>
+/* ================= COUNTDOWN TIMER ================= */
+
+const targetDate = new Date("January 8, 2026 09:00:00").getTime();
+
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    daysEl.innerText = "00";
+    hoursEl.innerText = "00";
+    minutesEl.innerText = "00";
+    secondsEl.innerText = "00";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  daysEl.innerText = String(days).padStart(2, "0");
+  hoursEl.innerText = String(hours).padStart(2, "0");
+  minutesEl.innerText = String(minutes).padStart(2, "0");
+  secondsEl.innerText = String(seconds).padStart(2, "0");
+}
+
+// Initial call
+updateCountdown();
+
+// Update every second
+setInterval(updateCountdown, 1000);
+
+
+/* ================= POSTER OVERLAY ================= */
+
+const posterOverlay = document.getElementById("posterOverlay");
+
+function openPoster() {
+  if (!posterOverlay) return;
+  posterOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closePoster() {
+  if (!posterOverlay) return;
+  posterOverlay.classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+
+/* ================= CLICK OUTSIDE TO CLOSE ================= */
+posterOverlay?.addEventListener("click", () => {
+  closePoster();
+});
+
+/* ================= ESC KEY TO CLOSE ================= */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && posterOverlay?.classList.contains("active")) {
+    closePoster();
+  }
+});
+
+/* ================= PREVENT IMAGE CLICK FROM CLOSING ================= */
+document.querySelector(".poster-box")?.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+</script>
 
 </body>
 
