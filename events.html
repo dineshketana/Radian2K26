@@ -51,7 +51,7 @@
       z-index: -1;
     }
 
-   
+
     /* ================= NAVBAR =================
     /* ================= RADIAN NAVBAR ================= */
     .radian-navbar {
@@ -118,6 +118,7 @@
     .navbar-toggler-icon {
       filter: invert(1);
     }
+
     /* ================= NAVBAR MOBILE FIX ================= */
     @media (max-width: 991px) {
       .radian-navbar {
@@ -162,6 +163,7 @@
         /* cleaner mobile */
       }
     }
+
     /* EVENTS PAGE TITLE */
     .events-title {
       width: 90%;
@@ -229,48 +231,96 @@
       background: rgba(0, 240, 255, 0.05);
     }
 
-    /* ================= COMING SOON ================= */
-    .coming-soon {
-      height: 80vh;
-      position: relative;
-      z-index: 2;
+    /* ================= EVENT CARDS ================= */
+    .events-section {
+      width: 90%;
+      margin: 40px auto;
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      align-items: stretch;
     }
 
-    .glass-card {
+
+    .events-section.active {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 3fr));
+      gap: 35px;
+    }
+
+    .event-card {
       background: rgba(20, 30, 60, 0.55);
-      border-radius: 20px;
-      padding: 60px 50px;
-      max-width: 600px;
-      box-shadow: 0 0 40px rgba(0, 153, 255, 0.35);
-      backdrop-filter: blur(15px);
-      animation: fadeUp 1.2s ease;
+      border-radius: 18px;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 0 35px rgba(0, 153, 255, 0.25);
+      transition: 0.4s ease;
+      position: relative;
     }
 
-    .glass-card h1 {
-      font-size: 2.8rem;
+    .event-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-card-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .event-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 45px rgba(0, 200, 255, 0.55);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #000;
+    }
+
+
+    .event-card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .event-card-content h3 {
       color: #1db9ff;
-      margin-bottom: 15px;
-    }
-
-    .glass-card p {
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
       font-size: 1.1rem;
-      color: #dcdcdc;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .event-card-content p {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      margin-bottom: 18px;
     }
 
-   
-  /* ================= FOOTER ================= */
+    .event-card-content a {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #00f0ff, #1db9ff);
+      color: #000;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .event-card-content a:hover {
+      background: linear-gradient(90deg, #1db9ff, #00f0ff);
+      transform: scale(1.05);
+    }
+
+
+    /* ================= FOOTER ================= */
     /* ================= RADIAN FOOTER ================= */
     .radian-footer {
       background: linear-gradient(to top, #02040f, #000);
@@ -409,13 +459,13 @@
             <a class="nav-link" href="home.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Events</a>
+            <a class="nav-link active" href="#">Events</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="coordinators.html">Coordinators</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="faq.html">FAQ's</a>
+            <a class="nav-link " href="faq.html">FAQ's</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="contact.html">Contacts</a>
@@ -441,12 +491,143 @@
     <button class="tab" data-tab="departmental">NON TECHNICAL</button>
   </div>
   <!-- EVENTS CONTENT -->
-  <div class="coming-soon d-flex justify-content-center align-items-center">
-    <div class="glass-card text-center">
-      <h1>Coming Soon</h1>
-      <p>Exciting events and activities are on their way. Stay tuned!</p>
+
+  <!-- TECHNICAL EVENTS -->
+  <div id="centerstage" class="events-section active">
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/techposters/battleofbrains.jpg">
+      <div class="event-card-content">
+        <h3>Battle of Brains</h3>
+        <p>Test your logic, speed, and technical intelligence.</p>
+        <a href="#">Register</a>
+      </div>
     </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/techposters/Bid2Conquer.png">
+      <div class="event-card-content">
+        <h3>Bid 2 Conquer</h3>
+        <p>Strategic bidding meets technical knowledge.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/techposters/passwordhunter.jpg">
+      <div class="event-card-content">
+        <h3>Password Hunter</h3>
+        <p>Crack codes and hunt hidden passwords.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/techposters/verdictofvoices.png">
+      <div class="event-card-content">
+        <h3>Verdict of Voices</h3>
+        <p>Where ideas, logic, and debate collide.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/techposters/vision forge.pdf">
+      <div class="event-card-content">
+        <h3>Vision Forge</h3>
+        <p>Transform ideas into impactful solutions.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/techposters/wizardsofcode.png">
+      <div class="event-card-content">
+        <h3>Wizards of Code</h3>
+        <p>Code, debug, and dominate the challenge.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/techposters/youthhungama.jpg">
+      <div class="event-card-content">
+        <h3>Youth Hungama</h3>
+        <p>A fusion of innovation and youthful energy.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
   </div>
+
+  <!-- NON TECHNICAL EVENTS -->
+  <div id="departmental" class="events-section">
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/nontechposters/ecocraftchallenge.png">
+      <div class="event-card-content">
+        <h3>EcoCraft Challenge</h3>
+        <p>Create sustainability with innovation.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/nontechposters/elegantverse.png">
+      <div class="event-card-content">
+        <h3>Elegant Verse</h3>
+        <p>Express creativity through words.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/nontechposters/esports.png">
+      <div class="event-card-content">
+        <h3>E-Sports</h3>
+        <p>Battle it out in the digital arena.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/nontechposters/Frames of colours.pdf">
+      <div class="event-card-content">
+        <h3>Frames of Colours</h3>
+        <p>Capture moments, tell stories.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/nontechposters/paperprep.png">
+      <div class="event-card-content">
+        <h3>Paper Prep</h3>
+        <p>Design, plan, and present ideas.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/nontechposters/reelsrush.png">
+      <div class="event-card-content">
+        <h3>Reels Rush</h3>
+        <p>Create viral moments in seconds.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="assets/images/eventposters/nontechposters/treasurehunt.png">
+      <div class="event-card-content">
+        <h3>Treasure Hunt</h3>
+        <p>Decode clues and race to victory.</p>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+  </div>
+
 
   <!-- FOOTER -->
   <footer class="radian-footer">
@@ -497,21 +678,21 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
     const tabs = document.querySelectorAll(".tab");
-    const contents = document.querySelectorAll(".tab-content");
+    const sections = document.querySelectorAll(".events-section");
 
-    tabs.forEach((tab) => {
+    tabs.forEach(tab => {
       tab.addEventListener("click", () => {
-        tabs.forEach((t) => t.classList.remove("active"));
-        contents.forEach((c) => c.classList.remove("active"));
+        tabs.forEach(t => t.classList.remove("active"));
+        sections.forEach(s => s.classList.remove("active"));
 
         tab.classList.add("active");
         document.getElementById(tab.dataset.tab).classList.add("active");
       });
     });
   </script>
+
 </body>
 
 </html>
