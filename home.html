@@ -289,6 +289,7 @@ video{
   visibility: hidden;
   transition: 0.4s ease;
   z-index: 999;
+    overscroll-behavior: contain;
 }
 
 .poster-overlay.active{
@@ -298,18 +299,20 @@ video{
 
 .poster-box{
   position: relative;
-  max-width: 85%;
-  max-height: 85%;
+  max-width: 95%;
+  max-height: 90%;
   animation: popIn 0.4s ease;
 }
 
 .poster-box img{
   width: 100%;
-  height: auto;
+      max-height: 90vh;
   border-radius: 18px;
   box-shadow:
     0 0 30px rgba(0,240,255,0.6);
+  object-fit: contain;
 }
+
 
 /* Close Button */
 .poster-close{
@@ -330,6 +333,113 @@ video{
 @keyframes popIn{
   from{transform: scale(0.8); opacity: 0;}
   to{transform: scale(1); opacity: 1;}
+}
+/* ================= MOBILE FIXES ONLY ================= */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Overlay spacing */
+  .overlay {
+    padding: 0 16px;
+  }
+
+  /* Title resize */
+  .title {
+    font-size: 2.6rem;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .date {
+    font-size: 0.8rem;
+  }
+
+  /* Countdown */
+  .countdown-box {
+    padding: 18px;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .countdown {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .time-box {
+    width: 70px;
+    height: 70px;
+  }
+
+  .time-box span {
+    font-size: 1.4rem;
+  }
+
+  /* LEFT NAV → BOTTOM NAV */
+  .navbar-left {
+    top: auto;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar-left ul {
+    flex-direction: row;
+    gap: 12px;
+    background: rgba(10,10,30,0.85);
+    padding: 10px 14px;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+  }
+
+  .navbar-left ul li {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+
+  /* Hide nav text on mobile */
+  .navbar-left ul li .title {
+    display: none;
+  }
+
+  /* Social bar → top right */
+  .social-bar {
+    top: 18px;
+    right: 14px;
+    transform: none;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .social-bar a {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  /* Poster button */
+  .poster-btn {
+    top: auto;
+    bottom: 90px;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 12px 18px;
+    font-size: 0.75rem;
+  }
+
+  /* Poster image fit */
+  .poster-box img {
+    max-height: 80vh;
+  }
 }
 
 </style>
