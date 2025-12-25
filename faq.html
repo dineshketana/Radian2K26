@@ -49,7 +49,8 @@
       z-index: -1;
     }
 
-    /* ================= NAVBAR ================= */
+    /* ================= NAVBAR =================
+    /* ================= RADIAN NAVBAR ================= */
     .radian-navbar {
       background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(14px);
@@ -71,9 +72,9 @@
     }
 
     .brand-title {
+      color: #fff;
       font-size: 1.3rem;
       letter-spacing: 2px;
-      color: #fff;
     }
 
     .brand-year {
@@ -81,6 +82,7 @@
       color: #1db9ff;
     }
 
+    /* LINKS */
     .nav-link {
       color: #fff !important;
       font-size: 0.9rem;
@@ -90,7 +92,7 @@
     }
 
     .nav-link::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: -4px;
@@ -105,6 +107,7 @@
       width: 100%;
     }
 
+    /* TOGGLER */
     .navbar-toggler {
       border: none;
     }
@@ -113,6 +116,7 @@
       filter: invert(1);
     }
 
+    /* MOBILE */
     @media (max-width: 991px) {
       .navbar-collapse {
         background: rgba(0, 0, 0, 0.85);
@@ -121,7 +125,50 @@
         padding: 20px;
       }
     }
+    /* ================= NAVBAR MOBILE FIX ================= */
+    @media (max-width: 991px) {
+      .radian-navbar {
+        height: auto;
+        padding: 10px 0;
+      }
 
+      .navbar-brand img {
+        width: 34px;
+      }
+
+      .brand-title {
+        font-size: 1.05rem;
+        letter-spacing: 1px;
+      }
+
+      .brand-year {
+        font-size: 0.75rem;
+      }
+
+      /* MOBILE MENU */
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.92);
+        margin-top: 12px;
+        border-radius: 14px;
+        padding: 18px 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      }
+
+      .navbar-nav {
+        gap: 14px;
+      }
+
+      .nav-link {
+        font-size: 0.95rem;
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      .nav-link::after {
+        display: none;
+        /* cleaner mobile */
+      }
+    }
     /* ================= FAQ HEADER ================= */
     .faq-header {
       text-align: center;
@@ -219,11 +266,13 @@
       margin-left: 10px;
     }
 
-    /* ================= FOOTER ================= */
+  /* ================= FOOTER ================= */
+    /* ================= RADIAN FOOTER ================= */
     .radian-footer {
       background: linear-gradient(to top, #02040f, #000);
       padding: 90px 50px 30px;
-      margin-top: 80px;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-wrapper {
@@ -234,13 +283,25 @@
       gap: 50px;
     }
 
+    .footer-box h2 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+
     .footer-box h2 span {
       color: #1db9ff;
     }
 
     .footer-box h4 {
-      color: #1db9ff;
       margin-bottom: 15px;
+      color: #1db9ff;
+    }
+
+    .footer-box p,
+    .footer-box li {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 8px;
     }
 
     .footer-box ul {
@@ -249,8 +310,14 @@
     }
 
     .footer-box ul li a {
-      color: #fff;
       text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .footer-box ul li a:hover {
+      color: #1db9ff;
+      padding-left: 6px;
     }
 
     .footer-social {
@@ -267,21 +334,26 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      transition: 0.3s;
+      font-size: 1.2rem;
+      transition: 0.3s ease;
     }
 
     .footer-social a:hover {
       background: #1db9ff;
+      border-color: #1db9ff;
       transform: translateY(-5px);
     }
 
     .footer-bottom {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
       text-align: center;
-      margin-top: 40px;
-      opacity: 0.7;
       font-size: 0.85rem;
+      opacity: 0.7;
     }
 
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .footer-wrapper {
         grid-template-columns: 1fr 1fr;
@@ -306,34 +378,45 @@
   <!-- BACKGROUND VIDEO -->
   <video class="bg-video" src="assets/videos/faq.mp4" autoplay muted loop playsinline></video>
   <div class="video-overlay"></div>
-
-  <!-- NAVBAR -->
+ <!-- NAVBAR -->
   <nav class="radian-navbar navbar navbar-expand-lg fixed-top">
     <div class="container-fluid px-5">
-      <a class="navbar-brand d-flex gap-2 align-items-center" href="home.html">
-        <img src="assets/images/radian_logo.png">
+      <!-- BRAND -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+        <img src="assets/images/radian_logo.png" alt="RADIAN Logo" />
         <div class="brand-text">
           <span class="brand-title">RADIAN</span>
           <span class="brand-year">2K26</span>
         </div>
       </a>
 
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <!-- TOGGLER -->
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#radianNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-end" id="nav">
+      <!-- LINKS -->
+      <div class="collapse navbar-collapse justify-content-end" id="radianNav">
         <ul class="navbar-nav gap-4">
-          <li><a class="nav-link" href="home.html">Home</a></li>
-          <li><a class="nav-link" href="events.html">Events</a></li>
-          <li><a class="nav-link" href="coordinators.html">Coordinators</a></li>
-          <li><a class="nav-link active" href="#">FAQ's</a></li>
-          <li><a class="nav-link" href="contact.html">Contacts</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="events.html">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="coordinators.html">Coordinators</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">FAQ's</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Contacts</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-
   <!-- FAQ CONTENT -->
   <section class="faq-header">
     <h1>FAQ's</h1>
@@ -405,11 +488,17 @@
   <!-- FOOTER -->
   <footer class="radian-footer">
     <div class="footer-wrapper">
-      <div class="footer-box">
+      <!-- BRAND -->
+      <div class="footer-box brand">
         <h2>RADIAN <span>2K26</span></h2>
-        <p>National Level Technical & Cultural Fest<br>ANITS, Visakhapatnam</p>
+        <p>
+          National Level Technical & Cultural Fest<br />
+          Department of Information Technology<br />
+          ANITS, Visakhapatnam
+        </p>
       </div>
 
+      <!-- QUICK LINKS -->
       <div class="footer-box">
         <h4>Quick Links</h4>
         <ul>
@@ -421,12 +510,14 @@
         </ul>
       </div>
 
+      <!-- CONTACT -->
       <div class="footer-box">
         <h4>Contact</h4>
-        <p>ANITS, Sangivalasa</p>
-        <p>radian@anits.edu.in</p>
+        <p><i class="bi bi-geo-alt"></i> ANITS, Sangivalasa</p>
+        <p><i class="bi bi-envelope"></i> radian@anits.edu.in</p>
       </div>
 
+      <!-- SOCIAL -->
       <div class="footer-box">
         <h4>Follow Us</h4>
         <div class="footer-social">
@@ -438,9 +529,10 @@
     </div>
 
     <div class="footer-bottom">
-      © 2026 RADIAN 2K26 IT DEPARTMENT · All Rights Reserved
+      © 2026 <strong>RADIAN 2K26 IT DEPARTMENT</strong> - All Rights Reserved
     </div>
   </footer>
+
 
   <script>
     document.querySelectorAll('.faq-question').forEach(q => {
