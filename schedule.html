@@ -580,6 +580,118 @@
         width: 100%;
       }
     }
+    /* =====================================================
+   MOBILE RESPONSIVE — SCHEDULE ONLY
+   (Nav & Footer untouched)
+===================================================== */
+
+/* ---------- Tablets & below ---------- */
+@media (max-width: 768px) {
+
+  .schedule-header h1 {
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+  }
+
+  .schedule-header p {
+    font-size: 0.9rem;
+  }
+
+  /* Timeline line closer */
+  .schedule-wrapper::before {
+    left: 8px;
+  }
+
+  .schedule-card {
+    margin-left: 26px;
+    padding: 18px;
+  }
+
+  .event-name {
+    font-size: 1.05rem;
+  }
+
+  .venue {
+    font-size: 0.85rem;
+  }
+
+  .countdown {
+    font-size: 0.7rem;
+  }
+}
+
+/* ---------- Mobile (600px & below) ---------- */
+@media (max-width: 600px) {
+
+  /* DAY & FILTER TABS */
+  .day-tabs button,
+  .filter-btn {
+    padding: 8px 18px;
+    font-size: 0.7rem;
+  }
+
+  /* STACK CARD CONTENT */
+  .schedule-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  /* Keep timeline dot aligned */
+  .schedule-card::before {
+    top: 22px;
+  }
+
+  /* Register button goes bottom-right */
+  .register-btn {
+    align-self: flex-end;
+    font-size: 0.7rem;
+    padding: 7px 16px;
+  }
+
+  .event-name {
+    font-size: 1rem;
+  }
+
+  .time {
+    font-size: 0.75rem;
+  }
+
+  .venue {
+    font-size: 0.8rem;
+  }
+}
+
+/* ---------- Extra Small (360px & below) ---------- */
+@media (max-width: 360px) {
+
+  .schedule-header {
+    padding: 100px 15px 30px;
+  }
+
+  .schedule-header h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .schedule-header p {
+    font-size: 0.8rem;
+  }
+
+  .schedule-card {
+    padding: 16px;
+  }
+
+  .event-badge {
+    font-size: 0.55rem;
+    padding: 3px 10px;
+  }
+
+  .register-btn {
+    padding: 6px 14px;
+  }
+}
+
   </style>
 </head>
 
