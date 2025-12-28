@@ -18,636 +18,668 @@
 </head>
 <style>
   /* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Orbitron', sans-serif;
-}
-
-body{
-  overflow-x:hidden;
-  background:#000;
-  color:#fff;
-}
-
-/* ================= BACKGROUND VIDEO ================= */
-video{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-2;
-}
-
-/* ================= MAIN OVERLAY ================= */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(5,0,20,0.65);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  z-index:1;
-  padding:0 20px;
-}
-
-/* ================= TITLES ================= */
-.title{
-  font-size:5rem;
-  letter-spacing:4px;
-  background:linear-gradient(90deg,#6fe3ff,#3fa9f5,#00f0ff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:
-    0 0 10px rgba(0,240,255,0.8),
-    0 0 25px rgba(0,160,255,0.8),
-    0 0 45px rgba(0,100,255,0.9);
-}
-
-.subtitle{
-  margin-top:10px;
-  font-size:1.1rem;
-  letter-spacing:2px;
-  color:#aeefff;
-}
-
-.date{
-  margin-top:6px;
-  font-size:0.9rem;
-  color:#7bdcff;
-}
-
-/* ================= LEFT NAVBAR ================= */
-.navbar-left{
-  position:fixed;
-  left:20px;
-  top:50%;
-  transform:translateY(-50%);
-  z-index:100;
-}
-
-.navbar-left ul{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-}
-
-.navbar-left ul li{
-  position:relative;
-  width:60px;
-  height:60px;
-  background:rgba(15,10,40,0.9);
-  border-radius:16px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-  overflow:hidden;
-  box-shadow:0 0 12px rgba(0,240,255,0.35);
-  transition:0.4s ease;
-}
-
-/* Glow */
-.navbar-left ul li::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background:linear-gradient(45deg,var(--i),var(--j));
-  border-radius:18px;
-  opacity:0;
-  filter:blur(8px);
-  transition:0.4s;
-}
-
-.navbar-left ul li:hover::before{
-  opacity:1;
-}
-
-.navbar-left ul li:hover{
-  transform:translateX(8px);
-  box-shadow:
-    0 0 18px var(--i),
-    0 0 40px var(--j);
-}
-
-/* Icon */
-.navbar-left ul li .icon{
-  font-size:26px;
-  color:#fff;
-  z-index:2;
-}
-
-/* Tooltip title */
-.navbar-left ul li .nav-title{
-  position:absolute;
-  left:72px;
-  font-size:12px;
-  letter-spacing:1px;
-  color:#8fefff;
-  opacity:0;
-  white-space:nowrap;
-  transition:0.4s;
-}
-
-.navbar-left ul li:hover .nav-title{
-  opacity:1;
-  left:78px;
-}
-
-.navbar-left a{
-  text-decoration:none;
-  color:inherit;
-}
-
-/* ================= SOCIAL BAR ================= */
-.social-bar{
-  position:fixed;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  z-index:5;
-}
-
-.social-bar a{
-  width:45px;
-  height:45px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:12px;
-  background:rgba(15,10,40,0.85);
-  color:#8fefff;
-  font-size:20px;
-  text-decoration:none;
-  box-shadow:0 0 10px rgba(0,240,255,0.4);
-  transition:0.3s;
-}
-
-.social-bar a:hover{
-  color:#fff;
-  transform:scale(1.1);
-  box-shadow:
-    0 0 12px #00f0ff,
-    0 0 25px #00bcd4;
-}
-
-/* ================= COUNTDOWN ================= */
-.countdown-box{
-  margin-top:25px;
-  padding:25px 35px;
-  background:rgba(10,10,35,0.55);
-  border-radius:18px;
-  backdrop-filter:blur(15px);
-  box-shadow:
-    0 0 20px rgba(0,240,255,0.25),
-    inset 0 0 25px rgba(0,180,255,0.2);
-}
-
-.countdown-title{
-  margin-bottom:15px;
-  letter-spacing:2px;
-  color:#9eeeff;
-}
-
-.countdown{
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.time-box{
-  width:90px;
-  height:90px;
-  background:linear-gradient(145deg,#1a2b55,#0a1433);
-  border-radius:16px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  box-shadow:0 0 15px rgba(0,240,255,0.4);
-}
-
-.time-box span{
-  font-size:2rem;
-  color:#6fe3ff;
-  text-shadow:0 0 12px rgba(0,240,255,0.9);
-  font-variant-numeric:tabular-nums;
-}
-
-.time-box small{
-  font-size:0.7rem;
-  letter-spacing:1px;
-  color:#aeefff;
-}
-
-/* ================= POSTER BUTTON ================= */
-.poster-btn{
-  position:fixed;
-  right:90px;
-  top:9%;
-  z-index:20;
-  padding:14px 22px;
-  font-size:0.85rem;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  color:#00f0ff;
-  background:rgba(10,15,40,0.85);
-  border:1px solid #00f0ff;
-  border-radius:14px;
-  cursor:pointer;
-  transition:0.3s;
-  box-shadow:
-    0 0 12px rgba(0,240,255,0.5),
-    inset 0 0 10px rgba(0,240,255,0.2);
-}
-
-.poster-btn:hover{
-  background:#00f0ff;
-  color:#000;
-  transform:scale(1.05);
-  box-shadow:
-    0 0 25px #00f0ff,
-    0 0 50px #00bcd4;
-}
-
-/* ================= POSTER OVERLAY ================= */
-.poster-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  backdrop-filter:blur(10px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  opacity:0;
-  visibility:hidden;
-  transition:opacity 0.4s ease, backdrop-filter 0.4s ease;
-  z-index:999;
-}
-
-.poster-overlay.active{
-  opacity:1;
-  visibility:visible;
-}
-
-.poster-box{
-  position:relative;
-  max-width:95%;
-  max-height:90%;
-  animation:popIn 0.4s ease;
-}
-
-.poster-box img{
-  width:100%;
-  max-height:90vh;
-  object-fit:contain;
-  border-radius:18px;
-  box-shadow:0 0 30px rgba(0,240,255,0.6);
-}
-
-.poster-close{
-  position:absolute;
-  top:-18px;
-  right:-18px;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  border:none;
-  font-size:22px;
-  background:#00f0ff;
-  color:#000;
-  cursor:pointer;
-  box-shadow:0 0 20px #00f0ff;
-}
-
-@keyframes popIn{
-  from{transform:scale(0.85);opacity:0;}
-  to{transform:scale(1);opacity:1;}
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-
-  .title{
-    font-size:2.6rem;
-    letter-spacing:2px;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
   }
 
-  .subtitle{
-    font-size:0.85rem;
+  body {
+    overflow-x: hidden;
+    background: #000;
+    color: #fff;
   }
 
-  .countdown-box{
-    padding:18px;
-    max-width:360px;
-    width:100%;
+  /* ================= BACKGROUND VIDEO ================= */
+  video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
   }
 
-  .time-box{
-    width:70px;
-    height:70px;
-  }
-
-  .time-box span{
-    font-size:1.4rem;
-  }
-
-  /* Navbar → top center */
-  .navbar-left{
-    top:18px;
-    left:50%;
-    transform:translateX(-50%);
-  }
-
-  .navbar-left ul{
-    flex-direction:row;
-    gap:12px;
-    background:rgba(10,10,30,0.85);
-    padding:10px 14px;
-    border-radius:18px;
-    backdrop-filter:blur(10px);
-  }
-
-  .navbar-left ul li{
-    width:46px;
-    height:46px;
-  }
-
-  .navbar-left ul li .nav-title{
-    display:none;
-  }
-
-  /* Social → bottom */
-  .social-bar{
-    top:auto;
-    bottom:14px;
-    left:50%;
-    transform:translateX(-50%);
-    flex-direction:row;
-    padding:12px 18px;
-    background:rgba(10,10,30,0.85);
-    border-radius:22px;
-    backdrop-filter:blur(12px);
-  }
-
-  .social-bar a{
-    width:40px;
-    height:40px;
-    font-size:18px;
-  }
-
-  .poster-btn{
-    top:auto;
-    bottom:90px;
-    right:50%;
-    transform:translateX(50%);
-    font-size:0.75rem;
-    padding:12px 18px;
-  }
-}
-/* ================= EXTRA SMALL DEVICES ================= */
-@media (max-width: 360px) {
-
-  /* Reduce overall vertical crowding */
-  .overlay{
-    padding-bottom: 30px;
-    justify-content:center;
-  }
-
-  /* Main title tighter */
-  .title{
-    font-size: 2.1rem;
-    letter-spacing: 1.5px;
-  }
-
-  /* Subtitles tighter */
-  .subtitle{
-    font-size: 0.75rem;
-    letter-spacing: 0.8px;
-    margin-top: 6px;
-  }
-
-  .date{
-    font-size: 0.7rem;
-    margin-bottom: 8px;
-  }
-/* Countdown box slimmer */
-.countdown-box{
-  margin-top: 16px;          /* slightly tighter */
-  padding: 12px;             /* reduced padding */
-  border-radius: 14px;
-}
-
-/* Countdown layout – force single line (360px) */
-.countdown{
-  gap: 6px;
-  flex-wrap: nowrap;         /* keep all in one line */
-  justify-content: center;
-}
-
-/* Time box slightly smaller */
-.time-box{
-  width: 52px;               /* key change */
-  height: 52px;
-  border-radius: 10px;
-}
-
-/* Number size */
-.time-box span{
-  font-size: 1.05rem;
-}
-
-/* Label size */
-.time-box small{
-  font-size: 0.55rem;
-}
-
-
-  /* Navbar icons tighter */
-  .navbar-left ul{
-    padding: 8px 10px;
-    gap: 10px;
-  }
-
-  .navbar-left ul li{
-    width: 40px;
-    height: 40px;
-  }
-
-  .navbar-left ul li .icon{
-    font-size: 20px;
-  }
-
-  /* Poster button centered & smaller */
-  .poster-btn{
-    bottom: 100px;
-    font-size: 0.7rem;
-    padding: 10px 14px;
-    border-radius: 12px;
-  }
-
-  /* Social bar smaller */
-  .social-bar{
-    padding: 10px 14px;
-    gap: 12px;
-   bottom: 30px;   /* ⬆ moves it UP */
- 
-  }
-
-  .social-bar a{
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-  }
-
-  /* Poster image fit */
-  .poster-box img{
-    max-height: 72vh;
-  }
-
-}
-/* ================= MORE SMALL DEVICES ================= */
-@media (max-width: 320px) {
-
-  /* Reduce overall vertical crowding */
-  .overlay{
-    padding-bottom: 30px;
+  /* ================= MAIN OVERLAY ================= */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 0, 20, 0.65);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    padding: 0 20px;
   }
 
-  /* Main title tighter */
-  .title{
-    font-size: 1.9rem;
-    letter-spacing: 1.2px;
+  /* ================= TITLES ================= */
+  .title {
+    font-size: 5rem;
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, #6fe3ff, #3fa9f5, #00f0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow:
+      0 0 10px rgba(0, 240, 255, 0.8),
+      0 0 25px rgba(0, 160, 255, 0.8),
+      0 0 45px rgba(0, 100, 255, 0.9);
   }
 
-  /* Subtitles tighter */
-  .subtitle{
-    font-size: 0.7rem;
-    letter-spacing: 0.6px;
-    margin-top: 5px;
-  }
-
-  .date{
-    font-size: 0.65rem;
-    margin-bottom: 6px;
-  }
-
-  /* Countdown box slimmer */
-  .countdown-box{
-    margin-top: 14px;
-    padding: 12px;
-    border-radius: 12px;
-  }
-
-  /* Countdown layout stack */
-  .countdown{
-    gap: 6px;
-  }
-
-  .time-box{
-    width: 54px;
-    height: 54px;
-    border-radius: 10px;
-  }
-
-  .time-box span{
+  .subtitle {
+    margin-top: 10px;
     font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: #aeefff;
   }
 
-  .time-box small{
-    font-size: 0.55rem;
+  .date {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #7bdcff;
   }
 
-  /* Navbar icons tighter */
-  .navbar-left ul{
-    padding: 6px 8px;
-    gap: 8px;
+  /* ================= LEFT NAVBAR ================= */
+  .navbar-left {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
   }
 
-  .navbar-left ul li{
-    width: 36px;
-    height: 36px;
+  .navbar-left ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
   }
 
-  .navbar-left ul li .icon{
-    font-size: 18px;
-  }
-
-  /* Poster button centered & smaller */
-  .poster-btn{
-    bottom: 90px;
-    font-size: 0.65rem;
-    padding: 8px 12px;
-    border-radius: 10px;
-  }
-
-  /* Social bar smaller */
-  .social-bar{
-    padding: 8px 12px;
-    gap: 10px;
-    bottom: 36px;   /* ⬆ a bit more up for tiny screens */
-  }
-
-  .social-bar a{
-    width: 32px;
-    height: 32px;
-    font-size: 15px;
-  }
-
-  /* Poster image fit */
-  .poster-box img{
-    max-height: 68vh;
-  }
-
-}
-/* ================= COUNTDOWN: 360px AND ABOVE ================= */
-@media (min-width: 360px) {
-
-  /* Countdown box */
-  .countdown-box{
-    margin-top: 16px;
-    padding: 12px;
-    border-radius: 14px;
-  }
-
-  /* Countdown layout – ONE LINE */
-  .countdown{
+  .navbar-left ul li {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: rgba(15, 10, 40, 0.9);
+    border-radius: 16px;
     display: flex;
     justify-content: center;
-    gap: 6px;
-    flex-wrap: nowrap;      /* always single line */
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+    transition: 0.4s ease;
   }
 
-  /* Time box */
-  .time-box{
-    width: 52px;
-    height: 52px;
-    border-radius: 10px;
+  /* Glow */
+  .navbar-left ul li::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--i), var(--j));
+    border-radius: 18px;
+    opacity: 0;
+    filter: blur(8px);
+    transition: 0.4s;
   }
 
-  /* Number */
-  .time-box span{
-    font-size: 1.05rem;
+  .navbar-left ul li:hover::before {
+    opacity: 1;
   }
 
-  /* Label */
-  .time-box small{
-    font-size: 0.55rem;
+  .navbar-left ul li:hover {
+    transform: translateX(8px);
+    box-shadow:
+      0 0 18px var(--i),
+      0 0 40px var(--j);
   }
+
+  /* Icon */
+  .navbar-left ul li .icon {
+    font-size: 26px;
+    color: #fff;
+    z-index: 2;
+  }
+
+  /* Tooltip title */
+  .navbar-left ul li .nav-title {
+    position: absolute;
+    left: 72px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #8fefff;
+    opacity: 0;
+    white-space: nowrap;
+    transition: 0.4s;
+  }
+
+  .navbar-left ul li:hover .nav-title {
+    opacity: 1;
+    left: 78px;
+  }
+
+  .navbar-left a {
+    text-decoration: none;
+    color: inherit;
+  }
+/* Make full box clickable */
+.navbar-left ul li a {
+  position: absolute;
+  inset: 0;                 /* fills entire li */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
 }
 
+/* Icon should not block clicks */
+.navbar-left ul li .icon {
+  pointer-events: none;
+}
+
+  /* ================= SOCIAL BAR ================= */
+  .social-bar {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 5;
+  }
+
+  .social-bar a {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: rgba(15, 10, 40, 0.85);
+    color: #8fefff;
+    font-size: 20px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    transition: 0.3s;
+  }
+
+  .social-bar a:hover {
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow:
+      0 0 12px #00f0ff,
+      0 0 25px #00bcd4;
+  }
+
+  /* ================= COUNTDOWN ================= */
+  .countdown-box {
+    margin-top: 25px;
+    padding: 25px 35px;
+    background: rgba(10, 10, 35, 0.55);
+    border-radius: 18px;
+    backdrop-filter: blur(15px);
+    box-shadow:
+      0 0 20px rgba(0, 240, 255, 0.25),
+      inset 0 0 25px rgba(0, 180, 255, 0.2);
+  }
+
+  .countdown-title {
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    color: #9eeeff;
+  }
+
+  .countdown {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .time-box {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(145deg, #1a2b55, #0a1433);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  }
+
+  .time-box span {
+    font-size: 2rem;
+    color: #6fe3ff;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.9);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .time-box small {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: #aeefff;
+  }
+
+  /* ================= POSTER BUTTON ================= */
+  .poster-btn {
+    position: fixed;
+    right: 90px;
+    top: 9%;
+    z-index: 20;
+    padding: 14px 22px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #00f0ff;
+    background: rgba(10, 15, 40, 0.85);
+    border: 1px solid #00f0ff;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow:
+      0 0 12px rgba(0, 240, 255, 0.5),
+      inset 0 0 10px rgba(0, 240, 255, 0.2);
+  }
+
+  .poster-btn:hover {
+    background: #00f0ff;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow:
+      0 0 25px #00f0ff,
+      0 0 50px #00bcd4;
+  }
+
+  /* ================= POSTER OVERLAY ================= */
+  .poster-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+    z-index: 999;
+  }
+
+  .poster-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .poster-box {
+    position: relative;
+    max-width: 95%;
+    max-height: 90%;
+    animation: popIn 0.4s ease;
+  }
+
+  .poster-box img {
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+  }
+
+  .poster-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    font-size: 22px;
+    background: #00f0ff;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 0 20px #00f0ff;
+  }
+
+  @keyframes popIn {
+    from {
+      transform: scale(0.85);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* ================= MOBILE ================= */
+  @media(max-width:768px) {
+
+    .title {
+      font-size: 2.6rem;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+    }
+
+    .countdown-box {
+      padding: 18px;
+      max-width: 360px;
+      width: 100%;
+    }
+
+    .time-box {
+      width: 70px;
+      height: 70px;
+    }
+
+    .time-box span {
+      font-size: 1.4rem;
+    }
+
+    /* Navbar → top center */
+    .navbar-left {
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .navbar-left ul {
+      flex-direction: row;
+      gap: 12px;
+      background: rgba(10, 10, 30, 0.85);
+      padding: 10px 14px;
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-left ul li {
+      width: 46px;
+      height: 46px;
+    }
+
+    .navbar-left ul li .nav-title {
+      display: none;
+    }
+
+    /* Social → bottom */
+    .social-bar {
+      top: auto;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      flex-direction: row;
+      padding: 12px 18px;
+      background: rgba(10, 10, 30, 0.85);
+      border-radius: 22px;
+      backdrop-filter: blur(12px);
+    }
+
+    .social-bar a {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+
+    .poster-btn {
+      top: auto;
+      bottom: 90px;
+      right: 50%;
+      transform: translateX(50%);
+      font-size: 0.75rem;
+      padding: 12px 18px;
+    }
+  }
+
+  /* ================= EXTRA SMALL DEVICES ================= */
+  @media (max-width: 360px) {
+
+    /* Reduce overall vertical crowding */
+    .overlay {
+      padding-bottom: 30px;
+      justify-content: center;
+    }
+
+    /* Main title tighter */
+    .title {
+      font-size: 2.1rem;
+      letter-spacing: 1.5px;
+    }
+
+    /* Subtitles tighter */
+    .subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 0.8px;
+      margin-top: 6px;
+    }
+
+    .date {
+      font-size: 0.7rem;
+      margin-bottom: 8px;
+    }
+
+    /* Countdown box slimmer */
+    .countdown-box {
+      margin-top: 16px;
+      /* slightly tighter */
+      padding: 12px;
+      /* reduced padding */
+      border-radius: 14px;
+    }
+
+    /* Countdown layout – force single line (360px) */
+    .countdown {
+      gap: 6px;
+      flex-wrap: nowrap;
+      /* keep all in one line */
+      justify-content: center;
+    }
+
+    /* Time box slightly smaller */
+    .time-box {
+      width: 52px;
+      /* key change */
+      height: 52px;
+      border-radius: 10px;
+    }
+
+    /* Number size */
+    .time-box span {
+      font-size: 1.05rem;
+    }
+
+    /* Label size */
+    .time-box small {
+      font-size: 0.55rem;
+    }
+
+
+    /* Navbar icons tighter */
+    .navbar-left ul {
+      padding: 8px 10px;
+      gap: 10px;
+    }
+
+    .navbar-left ul li {
+      width: 40px;
+      height: 40px;
+    }
+
+    .navbar-left ul li .icon {
+      font-size: 20px;
+    }
+
+    /* Poster button centered & smaller */
+    .poster-btn {
+      bottom: 100px;
+      font-size: 0.7rem;
+      padding: 10px 14px;
+      border-radius: 12px;
+    }
+
+    /* Social bar smaller */
+    .social-bar {
+      padding: 10px 14px;
+      gap: 12px;
+      bottom: 30px;
+      /* ⬆ moves it UP */
+
+    }
+
+    .social-bar a {
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+    }
+
+    /* Poster image fit */
+    .poster-box img {
+      max-height: 72vh;
+    }
+
+  }
+
+  /* ================= MORE SMALL DEVICES ================= */
+  @media (max-width: 320px) {
+
+    /* Reduce overall vertical crowding */
+    .overlay {
+      padding-bottom: 30px;
+      justify-content: center;
+    }
+
+    /* Main title tighter */
+    .title {
+      font-size: 1.9rem;
+      letter-spacing: 1.2px;
+    }
+
+    /* Subtitles tighter */
+    .subtitle {
+      font-size: 0.7rem;
+      letter-spacing: 0.6px;
+      margin-top: 5px;
+    }
+
+    .date {
+      font-size: 0.65rem;
+      margin-bottom: 6px;
+    }
+
+    /* Countdown box slimmer */
+    .countdown-box {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    /* Countdown layout stack */
+    .countdown {
+      gap: 6px;
+    }
+
+    .time-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 10px;
+    }
+
+    .time-box span {
+      font-size: 1.1rem;
+    }
+
+    .time-box small {
+      font-size: 0.55rem;
+    }
+
+    /* Navbar icons tighter */
+    .navbar-left ul {
+      padding: 6px 8px;
+      gap: 8px;
+    }
+
+    .navbar-left ul li {
+      width: 36px;
+      height: 36px;
+    }
+
+    .navbar-left ul li .icon {
+      font-size: 18px;
+    }
+
+    /* Poster button centered & smaller */
+    .poster-btn {
+      bottom: 90px;
+      font-size: 0.65rem;
+      padding: 8px 12px;
+      border-radius: 10px;
+    }
+
+    /* Social bar smaller */
+    .social-bar {
+      padding: 8px 12px;
+      gap: 10px;
+      bottom: 36px;
+      /* ⬆ a bit more up for tiny screens */
+    }
+
+    .social-bar a {
+      width: 32px;
+      height: 32px;
+      font-size: 15px;
+    }
+
+    /* Poster image fit */
+    .poster-box img {
+      max-height: 68vh;
+    }
+
+  }
+
+  /* ================= COUNTDOWN: 360px AND ABOVE ================= */
+  @media (min-width: 360px) {
+
+    /* Countdown box */
+    .countdown-box {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 14px;
+    }
+
+    /* Countdown layout – ONE LINE */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+      /* always single line */
+    }
+
+    /* Time box */
+    .time-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+    }
+
+    /* Number */
+    .time-box span {
+      font-size: 1.05rem;
+    }
+
+    /* Label */
+    .time-box small {
+      font-size: 0.55rem;
+    }
+  }
 </style>
+
 <body>
 
   <!-- Video Background -->
@@ -658,32 +690,68 @@ video{
   <!-- LEFT SIDE NAVBAR -->
   <nav class="navbar-left">
     <ul>
+      <!-- Home -->
       <li style="--i:#a955ff;--j:#ea51ff">
-        <a href="#"><span class="icon"><ion-icon name="home-outline"></ion-icon></span></a>
+        <a href="#">
+          <span class="icon">
+            <ion-icon name="home-outline"></ion-icon>
+          </span>
+        </a>
       </li>
 
+      <!-- Events -->
       <li style="--i:#56CCF2;--j:#2F80ED">
-        <a href="events.html"><span class="icon"><ion-icon name="calendar-outline"></ion-icon></span></a>
+        <a href="events.html">
+          <span class="icon">
+            <ion-icon name="calendar-number-outline"></ion-icon>
+          </span>
+        </a>
       </li>
 
+      <!-- Schedule -->
       <li style="--i:#FF9966;--j:#FF5E62">
-        <a href="coordinators.html"><span class="icon"><ion-icon name="accessibility-outline"></ion-icon></span></a>
+        <a href="schedule.html">
+          <span class="icon">
+            <ion-icon name="time-outline"></ion-icon>
+          </span>
+        </a>
       </li>
 
+      <!-- Coordinators -->
+      <li style="--i:#F2994A;--j:#F2C94C">
+        <a href="coordinators.html">
+          <span class="icon">
+            <ion-icon name="people-outline"></ion-icon>
+          </span>
+        </a>
+      </li>
+
+      <!-- FAQ -->
       <li style="--i:#80FF72;--j:#7EE8FA">
-        <a href="faq.html"><span class="icon"><ion-icon name="help-circle-outline"></ion-icon></span></a>
+        <a href="faq.html">
+          <span class="icon">
+            <ion-icon name="help-circle-outline"></ion-icon>
+          </span>
+        </a>
       </li>
 
+      <!-- Contact -->
       <li style="--i:#ffa9c6;--j:#f434e2">
-        <a href="contact.html"><span class="icon"><ion-icon name="call-outline"></ion-icon></span></a>
+        <a href="contact.html">
+          <span class="icon">
+            <ion-icon name="call-outline"></ion-icon>
+          </span>
+        </a>
       </li>
     </ul>
   </nav>
+
   <!-- Social Media Icons -->
   <div class="social-bar">
     <a href="https://www.instagram.com/radian_2k26?igsh=MXRhNjQ1a29hY3Jraw==" title="Instagram"><i
         class="fab fa-instagram"></i></a>
-    <a href="https://www.linkedin.com/company/anil-neerukonda-institute-of-technology-sciences/about/" title="linkedin"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.linkedin.com/company/anil-neerukonda-institute-of-technology-sciences/about/"
+      title="linkedin"><i class="fab fa-linkedin"></i></a>
     <a href="https://wa.link/gqujck" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
   </div>
 
@@ -739,79 +807,79 @@ video{
       <img src="assets/images/radian_2k26_poster.png" alt="RADIAN 2K26 Poster">
     </div>
   </div>
-<script>
-/* ================= COUNTDOWN TIMER ================= */
+  <script>
+    /* ================= COUNTDOWN TIMER ================= */
 
-const targetDate = new Date("January 8, 2026 09:00:00").getTime();
+    const targetDate = new Date("January 8, 2026 09:00:00").getTime();
 
-const daysEl = document.getElementById("days");
-const hoursEl = document.getElementById("hours");
-const minutesEl = document.getElementById("minutes");
-const secondsEl = document.getElementById("seconds");
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const diff = targetDate - now;
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
 
-  if (diff <= 0) {
-    daysEl.innerText = "00";
-    hoursEl.innerText = "00";
-    minutesEl.innerText = "00";
-    secondsEl.innerText = "00";
-    return;
-  }
+      if (diff <= 0) {
+        daysEl.innerText = "00";
+        hoursEl.innerText = "00";
+        minutesEl.innerText = "00";
+        secondsEl.innerText = "00";
+        return;
+      }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
-  daysEl.innerText = String(days).padStart(2, "0");
-  hoursEl.innerText = String(hours).padStart(2, "0");
-  minutesEl.innerText = String(minutes).padStart(2, "0");
-  secondsEl.innerText = String(seconds).padStart(2, "0");
-}
+      daysEl.innerText = String(days).padStart(2, "0");
+      hoursEl.innerText = String(hours).padStart(2, "0");
+      minutesEl.innerText = String(minutes).padStart(2, "0");
+      secondsEl.innerText = String(seconds).padStart(2, "0");
+    }
 
-// Initial call
-updateCountdown();
+    // Initial call
+    updateCountdown();
 
-// Update every second
-setInterval(updateCountdown, 1000);
+    // Update every second
+    setInterval(updateCountdown, 1000);
 
 
-/* ================= POSTER OVERLAY ================= */
+    /* ================= POSTER OVERLAY ================= */
 
-const posterOverlay = document.getElementById("posterOverlay");
+    const posterOverlay = document.getElementById("posterOverlay");
 
-function openPoster() {
-  if (!posterOverlay) return;
-  posterOverlay.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
+    function openPoster() {
+      if (!posterOverlay) return;
+      posterOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
 
-function closePoster() {
-  if (!posterOverlay) return;
-  posterOverlay.classList.remove("active");
-  document.body.style.overflow = "auto";
-}
+    function closePoster() {
+      if (!posterOverlay) return;
+      posterOverlay.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
 
-/* ================= CLICK OUTSIDE TO CLOSE ================= */
-posterOverlay?.addEventListener("click", () => {
-  closePoster();
-});
+    /* ================= CLICK OUTSIDE TO CLOSE ================= */
+    posterOverlay?.addEventListener("click", () => {
+      closePoster();
+    });
 
-/* ================= ESC KEY TO CLOSE ================= */
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && posterOverlay?.classList.contains("active")) {
-    closePoster();
-  }
-});
+    /* ================= ESC KEY TO CLOSE ================= */
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && posterOverlay?.classList.contains("active")) {
+        closePoster();
+      }
+    });
 
-/* ================= PREVENT IMAGE CLICK FROM CLOSING ================= */
-document.querySelector(".poster-box")?.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
-</script>
+    /* ================= PREVENT IMAGE CLICK FROM CLOSING ================= */
+    document.querySelector(".poster-box")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  </script>
 
 </body>
 
