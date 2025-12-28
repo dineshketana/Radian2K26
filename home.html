@@ -769,7 +769,7 @@
     <!-- ✅ COUNTDOWN JUST BELOW DATE -->
     <div class="countdown-box">
       <div class="countdown-title">
-        Excitement Begins in ...
+        System Initializing ...
       </div>
 
       <div class="countdown">
@@ -810,41 +810,83 @@
   <script>
     /* ================= COUNTDOWN TIMER ================= */
 
-    const targetDate = new Date("January 8, 2026 09:00:00").getTime();
+  /* ================= FEST DATES ================= */
+  const festStartDay1 = new Date("January 8, 2026 08:45:00").getTime();
+  const festStartDay2 = new Date("January 9, 2026 08:45:00").getTime();
+  const festEnd = new Date("January 9, 2026 21:00:00").getTime();
 
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const diff = targetDate - now;
+  const countdownBox = document.querySelector(".countdown-box");
 
-      if (diff <= 0) {
-        daysEl.innerText = "00";
-        hoursEl.innerText = "00";
-        minutesEl.innerText = "00";
-        secondsEl.innerText = "00";
-        return;
-      }
+  function showFestMessage(text, buttonText, link) {
+    countdownBox.innerHTML = `
+      <div style="text-align:center">
+        <div style="
+          font-size:1.4rem;
+          letter-spacing:2px;
+          color:#00f0ff;
+          text-shadow:0 0 25px #00f0ff;
+          margin-bottom:14px;">
+          ${text}
+        </div>
+        ${buttonText ? `
+        <button onclick="window.location.href='${link}'"
+          style="
+            padding:12px 20px;
+            border-radius:14px;
+            border:none;
+            background:#00f0ff;
+            color:#000;
+            font-family:Orbitron;
+            cursor:pointer;
+            box-shadow:0 0 20px #00f0ff;">
+          ${buttonText}
+        </button>` : ``}
+      </div>
+    `;
+  }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+  function updateCountdown() {
+    const now = new Date().getTime();
 
-      daysEl.innerText = String(days).padStart(2, "0");
-      hoursEl.innerText = String(hours).padStart(2, "0");
-      minutesEl.innerText = String(minutes).padStart(2, "0");
-      secondsEl.innerText = String(seconds).padStart(2, "0");
+    /* 🏁 AFTER FEST */
+    if (now > festEnd) {
+      showFestMessage("THANK YOU FOR VISITING", "Gallery Coming Soon", "#");
+      return;
     }
 
-    // Initial call
-    updateCountdown();
+    /* 🎉 DAY 2 LIVE */
+    if (now >= festStartDay2) {
+      showFestMessage("DAY 2: FULL THROTTLE", "View Schedule", "schedule.html");
+      return;
+    }
 
-    // Update every second
-    setInterval(updateCountdown, 1000);
+    /* 🚀 DAY 1 LIVE */
+    if (now >= festStartDay1) {
+      showFestMessage("DAY 1: ACTIVATED", "View Schedule", "schedule.html");
+      return;
+    }
+
+    /* ⏳ BEFORE FEST → COUNTDOWN */
+    const diff = festStartDay1 - now;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    daysEl.innerText = String(days).padStart(2, "0");
+    hoursEl.innerText = String(hours).padStart(2, "0");
+    minutesEl.innerText = String(minutes).padStart(2, "0");
+    secondsEl.innerText = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
 
     /* ================= POSTER OVERLAY ================= */
