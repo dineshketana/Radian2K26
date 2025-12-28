@@ -575,6 +575,47 @@
         width: 100%;
       }
     }
+    .poster-btn {
+  position: fixed;
+  right: 90px;
+  top: 9%;
+  z-index: 20;
+  padding: 14px 22px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #00f0ff;
+  background: rgba(10, 15, 40, 0.85);
+  border: 1px solid #00f0ff;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow:
+    0 0 12px rgba(0, 240, 255, 0.5),
+    inset 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.poster-btn:hover {
+  background: #00f0ff;
+  color: #000;
+  transform: scale(1.05);
+  box-shadow:
+    0 0 25px #00f0ff,
+    0 0 50px #00bcd4;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .poster-btn {
+    top: auto;
+    bottom: 90px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 0.75rem;
+    padding: 12px 18px;
+  }
+}
+
   </style>
 </head>
 
@@ -639,6 +680,10 @@
   <div class="events-title">
     <h1>EVENTS</h1>
   </div>
+  <button class="poster-btn" onclick="window.location.href='schedule.html'">
+  Click Here To View Schedule
+</button>
+
   <!-- EVENTS TAB-->
   <div class="event-tabs">
     <button class="tab active" data-tab="centerstage">TECHNICAL</button>
